@@ -10644,3 +10644,12 @@ a.text-dark:focus {
   }
 }
 
+.card.auth {
+  border-color: #e9ecef;
+  border-radius: 0.6rem;
+}
+
+.card.auth .card-body {
+  padding: 2rem;
+}
+

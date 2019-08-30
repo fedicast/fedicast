@@ -6,3 +6,13 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+.card.auth{
+    border-color: #e9ecef;
+    border-radius: 0.6rem;
+
+    .card-body{
+        padding: 2rem;
+    }
+}
