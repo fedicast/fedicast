@@ -8,11 +8,27 @@
 @import '~bootstrap/scss/bootstrap';
 
 
+//
+// Auth view card
+//
 .card.auth{
     border-color: #e9ecef;
     border-radius: 0.6rem;
-
     .card-body{
         padding: 2rem;
+    }
+}
+
+//
+// Keep footer at bottom
+//
+
+#app{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    main{
+        flex-grow: 1;
     }
 }
