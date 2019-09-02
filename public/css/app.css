@@ -10653,13 +10653,3 @@ a.text-dark:focus {
   padding: 2rem;
 }
 
-#app {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-#app main {
-  flex-grow: 1;
-}
-
