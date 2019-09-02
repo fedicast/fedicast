@@ -14,6 +14,9 @@
 Route::view('/', 'welcome')->name('home');
 Route::view('/pricing', 'pricing')->name('pricing');
 Route::view('/platform', 'platform')->name('platform');
+Route::view('/support', 'support')->name('support');
+
+Route::view('/blog', 'blog')->name('blog');
 
 Auth::routes(['verify' => true]);
 
