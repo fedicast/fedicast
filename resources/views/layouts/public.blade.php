@@ -91,13 +91,13 @@
             <div class="row mb-4">
                 <div class="col">
                     <nav class="nav flex-column">
-                        <a class="nav-link" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
                         <span class="nav-link">
                             <a  href="{{ route('login') }}">{{ __('Login') }}</a> /
                             <a  href="{{ route('register') }}">{{ __('Join Free') }}</a>
                         </span>
-                        <a class="nav-link" href="#">About</a>
-                        <a class="nav-link" href="{{ route('blog') }}">Blog</a>
+                        <a class="nav-link" href="{{ route('about') }}">{{ __('About') }}</a>
+                        <a class="nav-link" href="{{ route('blog') }}">{{ __('Blog') }}</a>
                     </nav>
                 </div>
                 <div class="col">
@@ -125,7 +125,7 @@
                     <nav class="nav flex-column">
                         <a class="nav-link" href="#">{{ __('Privacy Policy') }}</a>
                         <a class="nav-link" href="#">{{ __('Terms of Service') }}</a>
-                        <a class="nav-link" href="{{ route('references') }}">{{ __('References') }}</a>
+                        <a class="nav-link" href="{{ route('about.references') }}">{{ __('References') }}</a>
                     </nav>
                 </div>
             </div>
