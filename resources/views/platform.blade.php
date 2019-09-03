@@ -18,5 +18,7 @@
 @endsection
 
 @section('content')
-    <h1>Platform</h1>
+    <div class="container">
+        <div>Main content...</div>
+    </div>
 @endsection

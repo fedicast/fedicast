@@ -15,5 +15,7 @@
 @endsection
 
 @section('content')
-    <h1>Pricing</h1>
+    <div class="container">
+        <div>Main content...</div>
+    </div>
 @endsection

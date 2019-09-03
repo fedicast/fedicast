@@ -1,9 +1,9 @@
-@extends('layouts.public')
+@extends('layouts.documentation')
 
 @section('banner-header')
     <section class="bg-white border-bottom pt-5 pb-6">
         <div class="container">
-            <h1 class="mb-5">Blog</h1>
+            <h1 class="mb-5">Documentation</h1>
 
 
             <form class="form-inline">
@@ -13,7 +13,7 @@
                             <i class="fas fa-search"></i>
                         </span>
                     </div>
-                    <input name="s" type="text" class="form-control border-0" placeholder="Search our blog..." aria-label="Search" aria-describedby="search-add-on">
+                    <input name="s" type="text" class="form-control border-0" placeholder="Search documentation..." aria-label="Search" aria-describedby="search-add-on">
                 </div>
             </form>
 
@@ -23,6 +23,9 @@
 
 @section('content')
     <div class="container">
-        <div>Main content...</div>
+        <div class="row">
+            <div class="col-4">navigation sidebar</div>
+            <div class="col-8">Main content...</div>
+        </div>
     </div>
 @endsection

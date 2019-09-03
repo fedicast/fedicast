@@ -16,11 +16,13 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('platform') }}">{{ __('Platform') }}</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('pricing') }}">{{ __('Pricing') }}</a></li>
-                </ul>
+                @section('main-nav-left')
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link" href="{{ route('platform') }}">{{ __('Platform') }}</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('pricing') }}">{{ __('Pricing') }}</a></li>
+                    </ul>
+                @show
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -83,14 +85,60 @@
 
     <!-- todo: make pretty -->
 
-    <footer class="footer container d-flex flex-row mt-auto">
-        <p class="flex-grow-1">&copy; FediCast 2019</p>
-        <p>
-            Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a
-                href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-        </p>
-        <p>
-            <a href="https://thenounproject.com/browse/?i=2817022#">Mic svg by Oleksandr Panasovskyi from the Noun Project</a>
-        </p>
+    <footer class="footer mt-auto py-4 border-top bg-white">
+        <div class="container mt-auto">
+
+            <div class="row mb-4">
+                <div class="col">
+                    <nav class="nav flex-column">
+                        <a class="nav-link" href="{{ route('home') }}">Home</a>
+                        <span class="nav-link">
+                            <a  href="{{ route('login') }}">{{ __('Login') }}</a> /
+                            <a  href="{{ route('register') }}">{{ __('Join Free') }}</a>
+                        </span>
+                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="{{ route('blog') }}">Blog</a>
+                    </nav>
+                </div>
+                <div class="col">
+                    <nav class="nav flex-column">
+                        <a class="nav-link " href="{{ route('platform') }}">{{ __('Platform') }}</a>
+                        <a class="nav-link" href="#">{{ __('Features') }}</a>
+                        <a class="nav-link" href="#">{{ __('Federation') }}</a>
+                        <a class="nav-link" href="{{ route('pricing') }}">{{ __('Pricing') }}</a>
+                    </nav>
+                </div>
+                <div class="col">
+                    <nav class="nav flex-column">
+                        <a class="nav-link" href="{{ route('support') }}">{{ __('Support') }}</a>
+                        <a class="nav-link" href="{{ route('password.request') }}">{{ __('Forgot your password?') }}</a>
+
+                        <a class="nav-link" href="{{ route('documentation') }}">{{ __('Documentation') }}</a>
+                        <a class="nav-link" href="{{ route('documentation.tutorials') }}">{{ __('Tutorials') }}</a>
+                        <span class="nav-link">
+                            <a  href="{{ route('documentation.api.mastodon') }}">{{ __('Mastodon API') }}</a> /
+                            <a  href="{{ route('documentation.api.fedicast') }}">{{ __('Fedicast API') }}</a>
+                        </span>
+                    </nav>
+                </div>
+                <div class="col">
+                    <nav class="nav flex-column">
+                        <a class="nav-link" href="#">{{ __('Privacy Policy') }}</a>
+                        <a class="nav-link" href="#">{{ __('Terms of Service') }}</a>
+                        <a class="nav-link" href="{{ route('references') }}">{{ __('References') }}</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">&copy; FediCast 2019</div>
+                <div class="col-4 text-right">
+                    <a href="https://github.com/fedicast/fedicast/" style="font-size: 1.25rem;">
+                        <i class="fab fa-github"></i>
+                    </a> FediCast is Licenced MIT
+                </div>
+            </div>
+
+
+        </div>
     </footer>
 @endsection
