@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container py-6">
         <div>Main content...</div>
     </div>
 @endsection

@@ -10,12 +10,10 @@
 @endsection
 
 @section('content')
-
-    <div class="container">
+    <div class="container py-6">
         <div class="row">
             <div class="col-4">navigation sidebar</div>
             <div class="col-8">Main content...</div>
         </div>
     </div>
-
 @endsection
