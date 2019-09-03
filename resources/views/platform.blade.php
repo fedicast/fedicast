@@ -18,7 +18,7 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container py-4">
         <div>Main content...</div>
     </div>
 @endsection
