@@ -1,8 +1,7 @@
 @extends('layouts.base')
 @section('base.body')
-    <nav class="navbar navbar-expand-md navbar-light @hasSection('sub-navigation')@else bg-white border-bottom @endif py-3">
+    <nav class="navbar navbar-expand-md navbar-light @if(!in_array_array(['sub-navigation', 'banner-header'], array_keys(View::getSections()))) bg-white border-bottom @elseif(in_array('banner-header', array_keys(View::getSections()))) bg-white @endif py-3">
         <div class="container">
-
             <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="{{ asset('/images/wifi.svg') }}" width="30" height="30" class="d-inline-block align-top"
                      alt="">
@@ -76,10 +75,11 @@
         </nav>
     @endif
 
+    @yield('banner-header')
+
     <main id="app" class="flex-shrink-0">
         @yield('content')
     </main>
-
 
     <!-- todo: make pretty -->
 
