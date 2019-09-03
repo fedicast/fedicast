@@ -5,13 +5,13 @@
     <div class="collapse navbar-collapse small" id="subNavigation">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">{{ __('Sublink One') }}</a>
+                <a class="nav-link font-weight-bold" href="{{ route('platform') }}">{{ __('Introduction') }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">{{ __('Sublink Two') }}</a>
+                <a class="nav-link" href="#">{{ __('Features') }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">{{ __('Sublink Three') }}</a>
+                <a class="nav-link" href="#">{{ __('Federation') }}</a>
             </li>
         </ul>
     </div>
