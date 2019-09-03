@@ -29,5 +29,34 @@
 .pb-6,
 .py-6 {
     padding-bottom: 4.25rem !important;
+}
 
+.bg-beige{
+    background: beige;
+}
+
+.welcome-banner{
+    color: #626258;
+}
+
+.hero-blog-pill{
+    display: inline-block;
+    font-size: 14px;
+    background-color: #626258;
+    padding: 2px 20px 2px 2px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+
+    span{
+        font-weight: normal;
+        line-height: 1.4;
+        display: inline-block;
+        vertical-align: top;
+        padding: 3px 16px;
+        font-size: 14px;
+    }
+
+    &:hover{
+        text-decoration: none;
+    }
 }
