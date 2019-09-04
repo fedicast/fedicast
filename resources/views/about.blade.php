@@ -11,6 +11,9 @@
                 <a class="nav-link" href="{{ route('about.budget') }}">{{ __('Budget') }}</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{ route('about.roadmap') }}">{{ __('Road Map') }}</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('about.references') }}">{{ __('References') }}</a>
             </li>
         </ul>
