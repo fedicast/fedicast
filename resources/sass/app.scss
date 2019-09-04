@@ -3,6 +3,7 @@
 
 // Variables
 @import 'variables';
+@import 'fonts';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
@@ -68,5 +69,22 @@
 
     &:hover{
         text-decoration: none;
+    }
+}
+
+.pricing-list-group{
+
+    &.summary{
+        margin-top: 4.1rem;
+    }
+
+    .list-group-item{
+        min-height: 75px;
+    }
+
+    &.pricing .list-group-item{
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
