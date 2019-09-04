@@ -8,6 +8,9 @@
                 <a class="nav-link font-weight-bold" href="{{ route('about') }}">{{ __('About') }}</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{ route('about.budget') }}">{{ __('Budget') }}</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('about.references') }}">{{ __('References') }}</a>
             </li>
         </ul>
@@ -50,7 +53,6 @@
                     Single-origin coffee brooklyn mumblecore, succulents keffiyeh swag salvia raw denim farm-to-table readymade craft beer taxidermy. Selvage waistcoat art party narwhal banh mi iPhone copper mug. Palo santo typewriter wolf everyday carry ethical semiotics, gastropub cronut tattooed deep v tumblr readymade. Hoodie asymmetrical authentic, woke banh mi you probably haven't heard of them edison bulb raclette pok pok forage. Kogi deep v cardigan celiac sriracha pinterest sustainable migas direct trade man braid sartorial banjo. Lyft ramps shabby chic readymade. Green juice disrupt lumbersexual, put a bird on it typewriter actually tousled celiac pug <slow-carb class=""></slow-carb>
                 </p>
             </div>
-
         </div>
 
 

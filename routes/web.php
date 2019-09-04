@@ -17,6 +17,8 @@ Route::view('/platform', 'platform')->name('platform');
 Route::view('/support', 'support')->name('support');
 Route::view('/about', 'about')->name('about');
 Route::view('/about/references', 'references')->name('about.references');
+Route::view('/about/budget', 'budget')->name('about.budget');
+
 Route::view('/support/documentation', 'documentation.documentation')->name('documentation');
 Route::view('/support/documentation/tutorials', 'documentation.tutorials')->name('documentation.tutorials');
 Route::view('/support/documentation/api/mastodon', 'documentation.api.mastodon')->name('documentation.api.mastodon');
