@@ -16504,6 +16504,16 @@ readers do not read off random characters that represent icons */
   color: #626258;
 }
 
+.icon-circle {
+  width: 33px;
+  height: 33px;
+  padding: 3px;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  display: flex;
+}
+
 .hero-blog-pill {
   display: inline-block;
   font-size: 14px;
