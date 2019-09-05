@@ -5,10 +5,10 @@
     <div class="collapse navbar-collapse small" id="subNavigation">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">{{ __('Plans') }}</a>
+                <a class="nav-link" href="{{ route('pricing') }}">{{ __('Plans') }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">{{ __('Support') }}</a>
+                <a class="nav-link" href="{{ route('support') }}">{{ __('Support') }}</a>
             </li>
         </ul>
     </div>
@@ -48,7 +48,7 @@
                             <li class="list-group-item bg-transparent border-top-0"><i class="icon-infinity"></i> / 1
                                 per podcast
                             </li>
-                            <li class="list-group-item bg-transparent">100GB/mo</li>
+                            <li class="list-group-item bg-transparent">100GB/mo&dagger;</li>
                             <li class="list-group-item bg-transparent">100MB</li>
                             <li class="list-group-item bg-transparent">3</li>
                         </ul>
@@ -103,9 +103,17 @@
                     While not currently a part of the <a href="https://opencollective.com/">Open Collective</a> FediCast likes to
                     be open with how the funds as raised are spent, <a href="{{ route('about.budget') }}">click here to see this years budget</a>.
                 </p>
+
+                <hr/>
+
+                <p>
+                    <strong>&dagger; Bandwidth Limits</strong>
+                </p>
+                <p>
+                    An average podcast encoded in 64kbps mono works out to be about 25MB per hour of audio. The free 100GB/mo
+                    therefore equals approximately 4,000 downloads.
+                </p>
             </div>
-
         </div>
-
     </div>
 @endsection
