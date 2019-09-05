@@ -5,7 +5,6 @@
         <div class="container">
             <h1>Tutorials</h1>
             <h2 class="h6 mb-5">A list of guides to help you get started with FediCast</h2>
-
         </div>
     </section>
 @endsection

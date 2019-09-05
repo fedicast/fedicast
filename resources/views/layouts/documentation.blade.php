@@ -4,6 +4,7 @@
     <ul class="navbar-nav mr-auto">
         <li class="nav-item"><a class="nav-link" href="{{ route('documentation') }}">{{ __('Documentation') }}</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('documentation.tutorials') }}">{{ __('Tutorials') }}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('documentation.faq') }}">{{ __('FAQ') }}</a></li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ __('Reference') }}
