@@ -1,6 +1,6 @@
 @extends('layouts.base')
 @section('base.body')
-    <nav class="navbar navbar-expand-md navbar-light @if(!in_array_array(['sub-navigation', 'banner-header'], array_keys(View::getSections()))) bg-white border-bottom @elseif(in_array('banner-header', array_keys(View::getSections()))) bg-white @endif py-3">
+    <nav class="navbar navbar-expand-md {{ !isset($darkBg) ? 'navbar-light' : 'navbar-dark' }} @if(!in_array_array(['sub-navigation', 'banner-header'], array_keys(View::getSections()))) bg-white border-bottom @elseif(in_array('banner-header', array_keys(View::getSections()))) bg-white @endif py-3">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="{{ asset('/images/wifi.svg') }}" width="30" height="30" class="d-inline-block align-top"
@@ -78,7 +78,7 @@
     </nav>
 
     @hasSection('sub-navigation')
-        <nav class="navbar navbar-expand-md navbar-light">
+        <nav class="navbar navbar-expand-md {{ !isset($darkBg) ? 'navbar-light' : 'navbar-dark' }}">
             <div class="container">
                 @yield('sub-navigation')
             </div>

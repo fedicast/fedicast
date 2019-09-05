@@ -42,6 +42,14 @@
     margin-bottom: 4.25rem !important;
 }
 
+.bg-dark-grad{
+    background: rgb(100,111,110);
+    background: radial-gradient(circle, rgba(100,111,110,1) 0%, rgba(34,43,55,1) 100%);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center 200px,50%;
+}
+
 .bg-beige{
     background: beige;
 }

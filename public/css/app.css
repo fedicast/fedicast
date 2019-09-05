@@ -16594,6 +16594,14 @@ readers do not read off random characters that represent icons */
   margin-bottom: 4.25rem !important;
 }
 
+.bg-dark-grad {
+  background: #646f6e;
+  background: radial-gradient(circle, #646f6e 0%, #222b37 100%);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center 200px, 50%;
+}
+
 .bg-beige {
   background: beige;
 }
