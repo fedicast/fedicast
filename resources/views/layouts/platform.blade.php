@@ -1,24 +1,18 @@
 @extends('layouts.public')
 
 @section('sub-navigation')
-    <strong class="navbar-brand">Platform</strong>
+    <strong class="navbar-brand">{{ $title }}</strong>
     <div class="collapse navbar-collapse small" id="subNavigation">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link font-weight-bold" href="{{ route('platform') }}">{{ __('Introduction') }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">{{ __('Features') }}</a>
+                <a class="nav-link" href="{{ route('platform.features') }}">{{ __('Features') }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">{{ __('Federation') }}</a>
+                <a class="nav-link" href="{{ route('platform.federation') }}">{{ __('Federation') }}</a>
             </li>
         </ul>
-    </div>
-@endsection
-
-@section('content')
-    <div class="container py-4">
-        <div>Main content...</div>
     </div>
 @endsection
