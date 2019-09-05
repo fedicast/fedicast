@@ -26,24 +26,23 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('blog') }}">{{ __('Blog') }}</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ __('Support') }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('support') }}">{{ __('Community') }}</a>
+                            <a class="dropdown-item" href="{{ route('documentation') }}">{{ __('Documentation') }}</a>
+                            <a class="dropdown-item" href="{{ route('documentation.faq') }}">{{ __('FAQ') }}</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="https://github.com/fedicast/fedicast/issues">{{ __('Github Issues') }} <span class="badge badge-secondary">5</span></a>
+                        </div>
+                    </li>
                     <!-- Authentication Links -->
                     @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('blog') }}">{{ __('Blog') }}</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ __('Support') }}
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('support') }}">{{ __('Community') }}</a>
-                                <a class="dropdown-item" href="{{ route('documentation') }}">{{ __('Documentation') }}</a>
-                                <a class="dropdown-item" href="{{ route('documentation.faq') }}">{{ __('FAQ') }}</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="https://github.com/fedicast/fedicast/issues">{{ __('Github Issues') }} <span class="badge badge-secondary">5</span></a>
-                            </div>
-                        </li>
-
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
@@ -136,6 +135,7 @@
                     <nav class="nav flex-column">
                         <a class="nav-link" href="#">{{ __('Privacy Policy') }}</a>
                         <a class="nav-link" href="#">{{ __('Terms of Service') }}</a>
+                        <a class="nav-link" href="{{ route('sitemap') }}">{{ __('Sitemap') }}</a>
                     </nav>
                 </div>
             </div>
