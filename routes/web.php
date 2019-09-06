@@ -32,4 +32,4 @@ Route::view('/blog', 'blog')->name('blog');
 
 Auth::routes(['verify' => true]);
 
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/~/{username?}', 'UserController@actionOverview')->name('user.overview');

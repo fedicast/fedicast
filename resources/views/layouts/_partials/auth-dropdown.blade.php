@@ -4,7 +4,7 @@
     </a>
 
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="{{ route('dashboard') }}">
+        <a class="dropdown-item" href="{{ route('user.overview') }}">
             {{ __('Dashboard') }}
         </a>
         <div class="dropdown-divider"></div>

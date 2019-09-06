@@ -5,7 +5,7 @@
                 <nav class="nav flex-column">
                     <a class="nav-link font-weight-bold" href="{{ route('home') }}">{{ __('Home') }}</a>
                     @auth
-                        <a class="nav-link" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
+                        <a class="nav-link" href="{{ route('user.overview') }}">{{ __('Dashboard') }}</a>
                     @else
                     <span class="nav-link">
                         <a  href="{{ route('login') }}">{{ __('Login') }}</a> /

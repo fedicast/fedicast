@@ -20,6 +20,20 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="d-flex flex-column h-100 {{ isset($darkBg) ? 'bg-dark-grad text-light' : '' }}">
+
+@if(!Auth::user()->hasVerifiedEmail())
+<div class="bg-dark text-light py-2 text-center">
+    @if (Session::get('resent', false) === false)
+        <form id="verify-email-link" method="POST" action="{{ route('verification.resend') }}">
+            @csrf
+           Please Verify your email. If you haven't received your email <a href="#" onclick="getElementById('verify-email-link').submit(); return false;">click here to
+                    resend</a>.
+        </form>
+    @else
+        Your verification email has been resent.
+    @endif
+</div>
+@endif
 @yield('base.body')
 </body>
 </html>

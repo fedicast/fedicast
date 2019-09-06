@@ -19,7 +19,7 @@
                 <div class="col">
                     <nav class="row nav ml-0">
                         <a class="nav-link col-4" href="#">{{ __('New Podcast') }}</a>
-                        <a class="nav-link col-4" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
+                        <a class="nav-link col-4" href="{{ route('user.overview') }}">{{ __('Dashboard') }}</a>
                         <a class="nav-link col-4" href="#">{{ __('Settings') }}</a>
                         <a class="nav-link col-4" href="#">{{ __('Account Activity') }}</a>
                         <a class="nav-link col-4" href="#">{{ __('Domains') }}</a>
