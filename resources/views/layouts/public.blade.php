@@ -18,8 +18,8 @@
                 <!-- Left Side Of Navbar -->
                 @section('main-nav-left')
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link" href="{{ route('platform') }}">{{ __('Platform') }}</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('timeline') }}">{{ __('Public Timeline') }}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('platform') }}">{{ __('Platform') }}</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('pricing') }}">{{ __('Pricing') }}</a></li>
                     </ul>
                 @show
