@@ -16656,3 +16656,7 @@ readers do not read off random characters that represent icons */
   align-items: center;
 }
 
+.navbar-nav.with-bottom-bordered-current .current-nav-item {
+  border-bottom: 3px solid #d8d8d8;
+}
+
