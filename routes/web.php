@@ -12,6 +12,7 @@
 */
 
 Route::view('/', 'welcome')->name('home');
+Route::view('/timeline', 'timeline')->name('timeline');
 Route::view('/sitemap', 'sitemap')->name('sitemap');
 Route::view('/pricing', 'pricing')->name('pricing');
 Route::view('/platform', 'platform.platform')->name('platform');
