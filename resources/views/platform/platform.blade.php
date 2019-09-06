@@ -7,7 +7,7 @@
                 The only podcast publishing platform to federate with Mastodon
             </h1>
             <h2 class="h4 mt-4 w-50">
-                Putting the ActivityPub into Public Radio, FediCasts gives you everything you need to publish on both
+                Putting the ActivityPub into Public Radio, FediCast gives you everything you need to publish on both
                 traditional and federated mediums.
             </h2>
         </div>
