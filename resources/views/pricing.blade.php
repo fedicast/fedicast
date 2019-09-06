@@ -25,6 +25,9 @@
         <div class="row my-5">
             <div class="col">
                 <ul class="pricing-list-group summary list-group list-group-flush">
+                    <li class="list-group-item bg-transparent"><strong>Podcasts</strong><br>
+                        <small>Each has its own fedicast.com/@username</small>
+                    </li>
                     <li class="list-group-item bg-transparent"><strong>Third party domains</strong><br>
                         <small>Purchased via a third party, e.g <a href="https://porkbun.com">porkbun</a></small>
                     </li>
@@ -45,7 +48,8 @@
                         <h2 class="card-title">Free</h2>
 
                         <ul class="pricing-list-group pricing list-group list-group-flush mb-3">
-                            <li class="list-group-item bg-transparent border-top-0"><i class="icon-infinity"></i> / 1
+                            <li class="list-group-item bg-transparent border-top-0">5</li>
+                            <li class="list-group-item bg-transparent"><i class="icon-infinity"></i> / 1
                                 per podcast
                             </li>
                             <li class="list-group-item bg-transparent">100GB/mo&dagger;</li>
@@ -59,7 +63,6 @@
                         </p>
 
                         <button type="button" class="btn btn-dark btn-lg w-50">Join Free</button>
-
                     </div>
                 </div>
 
@@ -69,7 +72,8 @@
                     <div class="card-body text-center">
                         <h2 class="card-title">Supporter*</h2>
                         <ul class="pricing-list-group pricing list-group list-group-flush mb-3">
-                            <li class="list-group-item bg-transparent border-top-0"><i class="icon-infinity"></i> / 1
+                            <li class="list-group-item bg-transparent border-top-0"><i class="icon-infinity"></i></li>
+                            <li class="list-group-item bg-transparent"><i class="icon-infinity"></i> / 1
                                 per podcast
                             </li>
                             <li class="list-group-item bg-transparent"><i class="icon-infinity"></i></li>
