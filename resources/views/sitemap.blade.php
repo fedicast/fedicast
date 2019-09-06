@@ -11,6 +11,25 @@
 @section('content')
     <div class="container py-6">
 
+        @auth
+            <div class="row border-top pt-3 mt-3 mb-6">
+                <div class="col-3">
+                    <h2 class="h4">Your Account</h2>
+                </div>
+                <div class="col">
+                    <nav class="row nav ml-0">
+                        <a class="nav-link col-4" href="#">{{ __('New Podcast') }}</a>
+                        <a class="nav-link col-4" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
+                        <a class="nav-link col-4" href="#">{{ __('Settings') }}</a>
+                        <a class="nav-link col-4" href="#">{{ __('Account Activity') }}</a>
+                        <a class="nav-link col-4" href="#">{{ __('Domains') }}</a>
+                        <a class="nav-link col-4" href="#">{{ __('Usage') }}</a>
+                        <a class="nav-link col-4" href="{{ route('logout') }}">{{ __('Logout') }}</a>
+                    </nav>
+                </div>
+            </div>
+        @endif
+
         <div class="row border-top pt-3 mt-3 mb-6">
             <div class="col-3">
                 <h2 class="h4">About</h2>
