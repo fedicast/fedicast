@@ -1,4 +1,4 @@
-@extends('layouts.platform', ['title' => __('Platform'), 'darkBg' => true])
+@extends('layouts.platform', ['title' => __('Platform'), 'darkBg' => true, 'bgGrad' => true ])
 
 @section('content')
     <div class="container py-4" style="    min-height: 800px;">
