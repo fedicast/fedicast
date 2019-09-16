@@ -38,8 +38,11 @@ Route::view('/blog', 'blog')->name('blog');
 Auth::routes(['verify' => true]);
 
 Route::get('/~/{username?}', 'UserController@actionOverview')->name('user.overview');
-Route::view('/~/{username}/settings', 'account.settings')->name('user.settings');
 Route::view('/~/{username}/podcasts', 'account.podcasts')->name('user.podcasts');
 Route::view('/~/{username}/domains', 'account.domains')->name('user.domains');
 Route::view('/~/{username}/usage', 'account.usage')->name('user.usage');
+
+Route::view('/account', 'account.settings')->name('user.settings');
+Route::view('/account/billing', 'account.settings')->name('user.settings.billing');
+Route::view('/account/plan', 'account.settings')->name('user.settings.plan');
 
