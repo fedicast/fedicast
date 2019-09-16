@@ -21,7 +21,7 @@
 </head>
 <body class="d-flex flex-column h-100 {{ isset($darkBg) ? 'bg-dark-grad text-light' : '' }}">
 
-@if(!Auth::user()->hasVerifiedEmail())
+@if(Auth::check() && !Auth::user()->hasVerifiedEmail())
 <div class="bg-dark text-light py-2 text-center">
     @if (Session::get('resent', false) === false)
         <form id="verify-email-link" method="POST" action="{{ route('verification.resend') }}">
