@@ -29,6 +29,10 @@ Route::view('/support/documentation/faq', 'documentation.faq')->name('documentat
 Route::view('/support/documentation/api/mastodon', 'documentation.api.mastodon')->name('documentation.api.mastodon');
 Route::view('/support/documentation/api/fedicast', 'documentation.api.fedicast')->name('documentation.api.fedicast');
 
+Route::view('/legal/privacy', 'legal.privacy')->name('legal.privacy');
+Route::view('/legal/toc', 'legal.toc')->name('legal.toc');
+Route::view('/legal/coc', 'legal.coc')->name('legal.coc');
+
 Route::view('/blog', 'blog')->name('blog');
 
 Auth::routes(['verify' => true]);

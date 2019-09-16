@@ -41,8 +41,9 @@
             </div>
             <div class="col">
                 <nav class="nav flex-column">
-                    <a class="nav-link" href="#">{{ __('Privacy Policy') }}</a>
-                    <a class="nav-link" href="#">{{ __('Terms of Service') }}</a>
+                    <a class="nav-link" href="{{ route('legal.privacy') }}">{{ __('Privacy Policy') }}</a>
+                    <a class="nav-link" href="{{ route('legal.toc') }}">{{ __('Terms of Service') }}</a>
+                    <a class="nav-link" href="{{ route('legal.coc') }}">{{ __('Code of Conduct') }}</a>
                     <a class="nav-link" href="{{ route('sitemap') }}">{{ __('Sitemap') }}</a>
                 </nav>
             </div>

@@ -91,9 +91,9 @@
             </div>
             <div class="col">
                 <nav class="row nav ml-0">
-                    <a class="nav-link col-4" href="#">{{ __('Privacy Policy') }}</a>
-                    <a class="nav-link col-4" href="#">{{ __('Terms of Service') }}</a>
-                    <a class="nav-link col-4" href="#">{{ __('Code of Conduct') }}</a>
+                    <a class="nav-link col-4" href="{{ route('legal.privacy') }}">{{ __('Privacy Policy') }}</a>
+                    <a class="nav-link col-4" href="{{ route('legal.toc') }}">{{ __('Terms of Service') }}</a>
+                    <a class="nav-link col-4" href="{{ route('legal.coc') }}">{{ __('Code of Conduct') }}</a>
                 </nav>
             </div>
         </div>
