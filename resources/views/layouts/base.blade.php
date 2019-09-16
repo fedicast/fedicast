@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="d-flex flex-column h-100 {{ isset($darkBg) ? 'bg-dark-grad text-light' : '' }}">
+<body class="d-flex flex-column h-100 {{ isset($darkBg) ? 'bg-dark text-light' : '' }} {{ isset($bgGrad) ? 'with-grad' : '' }}">
 
 @if(Auth::check() && !Auth::user()->hasVerifiedEmail())
 <div class="bg-dark text-light py-2 text-center">
