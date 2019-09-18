@@ -8,8 +8,8 @@
             {{ __('Dashboard') }}
         </a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">
-            {{ __('Settings') }}
+        <a class="dropdown-item" href="{{ route('user.settings') }}">
+            {{ __('Account Settings') }}
         </a>
         <a class="dropdown-item" href="#">
             {{ __('New Podcast') }}

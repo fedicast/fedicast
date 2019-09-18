@@ -16,7 +16,7 @@
                 <a class="nav-link" href="{{ route('user.usage', ['username' => \Auth::user()->name]) }}">{{ __('Usage') }}</a>
             </li>
             <li class="nav-item {{ (request()->routeIs('user.settings')) ? 'current-nav-item' : '' }} mr-2">
-                <a class="nav-link" href="{{ route('user.settings') }}">{{ __('Settings') }}</a>
+                <a class="nav-link" href="{{ route('user.settings') }}">{{ __('Account Settings') }}</a>
             </li>
         </ul>
     </div>
