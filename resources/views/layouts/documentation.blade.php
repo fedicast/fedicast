@@ -13,7 +13,7 @@
                 <a class="dropdown-item" href="{{ route('documentation.api.mastodon') }}">{{ __('Mastodon API') }}</a>
                 <a class="dropdown-item" href="{{ route('documentation.api.fedicast') }}">{{ __('FediCast API') }}</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="https://github.com/fedicast/fedicast/issues">{{ __('Github Issues') }} <span class="badge badge-secondary">5</span></a>
+                <a class="dropdown-item" href="https://github.com/fedicast/fedicast/issues">{{ __('Github Issues') }} <span class="badge badge-secondary">{{ getGithubIssuesCount() }}</span></a>
             </div>
         </li>
     </ul>

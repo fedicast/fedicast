@@ -80,7 +80,7 @@
                         <a  href="{{ route('documentation.api.fedicast') }}">{{ __('Fedicast API') }}</a>
                     </span>
                     <a class="nav-link col-4" href="https://github.com/fedicast/fedicast/"><i class="icon-github-text"></i> {{ __('Source Code') }}</a>
-                    <a class="nav-link col-4" href="https://github.com/fedicast/fedicast/issues">{{ __('Issue Tracker') }} <sup class="badge badge-secondary">5</sup></a>
+                    <a class="nav-link col-4" href="https://github.com/fedicast/fedicast/issues">{{ __('Issue Tracker') }} <sup class="badge badge-secondary">{{ getGithubIssuesCount() }}</sup></a>
                 </nav>
             </div>
         </div>
