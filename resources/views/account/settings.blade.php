@@ -1,11 +1,20 @@
 @extends('layouts.settings')
 
 @section('content')
+
+    <?php
+        /** @var \Illuminate\Support\ViewErrorBag $errors */
+        /** @var \App\User $user */
+        $user = Auth::user();
+        /** @var \Illuminate\Support\MessageBag $messages */
+        $messages = session()->get('messages', new \Illuminate\Support\MessageBag());
+    ?>
+
     <div class="container py-6">
         <div class="row justify-content-center">
             <div class="col-7">
                 <!-- Username -->
-                <form>
+                <form method="post" action="{{ route('user.settings.update') }}">
                     @csrf
                     <div class="card mb-5">
                         <div class="card-body">
@@ -16,13 +25,21 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="domain-addon">fedicast.com/</span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="username" aria-label="Username" aria-describedby="domain-addon">
+                                <input name="username" type="text" class="form-control {{ $errors->has('username') ? 'is-invalid' : ($messages->has('username') ? 'is-valid' : '') }}" value="{{ old('username', $user->identity->name ?? '') }}" placeholder="username" aria-label="Username" aria-describedby="domain-addon">
                             </div>
-                            <small class="form-text text-muted">Please use a maximum of 48 characters and no spaces.</small>
 
+                            @if ($error = $errors->first('username'))
+                            <small class="form-text text-danger">{{ $error }}</small>
+                            @elseif($msg = $messages->first('username'))
+                            <small class="form-text text-success">{{ $msg }}</small>
+                            @else
+                            <small class="form-text text-muted">{{ __('Please use a maximum of 48 characters and no spaces.') }}</small>
+                            @endif
                         </div>
                         <div class="card-footer d-flex align-items-center">
-                            <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>More information</small></a></span>
+                            <span class="flex-grow-1">
+                                <a href="#"><i class="icon-help"></i> <small>More information</small></a>
+                            </span>
                             <button type="submit" class="btn btn-sm btn-dark">Save</button>
                         </div>
                     </div>
@@ -30,21 +47,16 @@
                 <!-- ./ username -->
 
                 <!-- Display Name -->
-                <form>
+                <form method="post" action="{{ route('user.settings.update') }}">
                     @csrf
                     <div class="card mb-5">
                         <div class="card-body">
                             <h2>{{ __('Display Name') }}</h2>
                             Please enter your name or a display name you are comfortable with being public.
 
-                            <div class="input-group mt-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="domain-addon">fedicast.com/</span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="Sam" aria-label="Display Name" aria-describedby="domain-addon">
-                            </div>
-                            <small class="form-text text-muted">Please use a maximum of 32 characters.</small>
+                            <input name="display_name" type="text" class="form-control mt-3" placeholder="Sam" aria-label="{{ __('Display Name') }}" aria-describedby="display-name-extra">
 
+                            <small id="display-name-extra" class="form-text text-muted">Please use a maximum of 32 characters.</small>
                         </div>
                         <div class="card-footer d-flex align-items-center">
                             <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>More information</small></a></span>
@@ -55,14 +67,14 @@
                 <!-- ./ display name -->
 
                 <!-- Display Name -->
-                <form>
+                <form method="post" action="{{ route('user.settings.update') }}">
                     @csrf
                     <div class="card mb-5">
                         <div class="card-body">
                             <h2>{{ __('Email Address') }}</h2>
                             Please enter your name or a display name you are comfortable with being public.
-                            <input type="text" class="form-control mt-3" placeholder="me@example.com" aria-label="Display Name" aria-describedby="domain-addon">
-                            <small class="form-text text-muted">We will email you to verify this change.</small>
+                            <input name="email" type="text" class="form-control mt-3" placeholder="me@example.com" aria-label="{{ __('Email Address') }}" aria-describedby="email-extra">
+                            <small id="email-extra" class="form-text text-muted">We will email you to verify this change.</small>
                         </div>
                         <div class="card-footer d-flex align-items-center">
                             <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>More information</small></a></span>
@@ -75,7 +87,7 @@
                 <!-- Avatar -->
                 <form>
                     @csrf
-                    <div class="card">
+                    <div class="card mb-5">
                         <div class="card-body">
                             <h2>{{ __('Avatar') }}</h2>
 
@@ -97,6 +109,32 @@
                     </div>
                 </form>
                 <!-- ./ avatar -->
+
+                <!-- Account Removal -->
+                <form>
+                    @csrf
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>{{ __('Delete your account') }}</h2>
+                            This action will queue the deletion of your account and the removal of all
+                            account data, there will be a cool-down period of 14 days after which this
+                            action is irreversible.
+
+                            <div class="form-check border-top mt-3 pt-3">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                <label class="form-check-label" for="defaultCheck1">
+                                    I understand that by requesting account deletion all account data will be permanently destroyed.
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="card-footer d-flex align-items-center">
+                            <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>More information</small></a></span>
+                            <button type="submit" class="btn btn-sm btn-danger" disabled>Request account deletion</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- ./ account removal -->
 
             </div>
         </div>
