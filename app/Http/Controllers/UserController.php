@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DeleteAccountRequest;
 use App\Http\Requests\UpdateAccountRequest;
 use Auth;
 use Illuminate\Contracts\Support\Renderable;
@@ -39,5 +40,10 @@ class UserController extends Controller
         $request->persist($messageBag);
         return redirect()->back()
             ->with('messages', $messageBag);
+    }
+
+    public function actionDelete (DeleteAccountRequest $request)
+    {
+        $request->persist();
     }
 }

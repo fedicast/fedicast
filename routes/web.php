@@ -71,5 +71,6 @@ Route::group(['middleware' => ['auth']], function(){
 Route::group(['middleware' => ['auth']], function(){
 
     Route::post('/account', 'UserController@actionUpdate')->name('user.settings.update');
+    Route::delete('/account', 'UserController@actionDelete')->name('user.settings.delete');
 
 });

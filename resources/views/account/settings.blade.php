@@ -125,8 +125,10 @@
                 <!-- ./ avatar -->
 
                 <!-- Account Removal -->
-                <form>
+                <form method="post" action="{{ route('user.settings.delete') }}">
                     @csrf
+                    @method('delete')
+
                     <div class="card">
                         <div class="card-body">
                             <h2>{{ __('Delete your account') }}</h2>
