@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Str;
 
 /**
  * App\User
@@ -118,7 +119,7 @@ class User extends Authenticatable implements MustVerifyEmail, Nameable
             return $found;
         }
 
-        if ($saved = $this->identities()->save(new Identity(['name' => $username]))) {
+        if ($saved = $this->identities()->save(new Identity(['name' => Str::slug($username)]))) {
             $this->identity()->associate($saved)->save();
             return $saved;
         }
