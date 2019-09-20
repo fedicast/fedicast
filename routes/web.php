@@ -2,12 +2,11 @@
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Static Public Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| These routes point to pages that contain content that doesn't change
+| often or that doesn't need to go through a controller.
 |
 */
 
@@ -37,12 +36,40 @@ Route::view('/blog', 'blog')->name('blog');
 
 Auth::routes(['verify' => true]);
 
-Route::get('/~/{username?}', 'UserController@actionOverview')->name('user.overview');
-Route::view('/~/{username}/podcasts', 'account.podcasts')->name('user.podcasts');
-Route::view('/~/{username}/domains', 'account.domains')->name('user.domains');
-Route::view('/~/{username}/usage', 'account.usage')->name('user.usage');
+/*
+|--------------------------------------------------------------------------
+| Static Authenticated Routes
+|--------------------------------------------------------------------------
+|
+| These routes point to pages that contain content that doesn't change
+| often or that doesn't need to go through a controller but requires
+| the user be logged in.
+|
+*/
 
-Route::view('/account', 'account.settings')->name('user.settings');
-Route::view('/account/billing', 'account.settings')->name('user.settings.billing');
-Route::view('/account/plan', 'account.settings')->name('user.settings.plan');
+Route::group(['middleware' => ['auth']], function(){
+    Route::get('/~/{username?}', 'UserController@actionOverview')->name('user.overview');
+    Route::view('/~/{username}/podcasts', 'account.podcasts')->name('user.podcasts');
+    Route::view('/~/{username}/domains', 'account.domains')->name('user.domains');
+    Route::view('/~/{username}/usage', 'account.usage')->name('user.usage');
 
+    Route::view('/account', 'account.settings')->name('user.settings');
+    Route::view('/account/billing', 'account.settings')->name('user.settings.billing');
+    Route::view('/account/plan', 'account.settings')->name('user.settings.plan');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Dynamic Authenticated Routes
+|--------------------------------------------------------------------------
+|
+| Mostly authenticated api
+|
+*/
+
+Route::group(['middleware' => ['auth']], function(){
+
+    Route::post('/account', 'UserController@actionUpdate')->name('user.settings.update');
+
+});
