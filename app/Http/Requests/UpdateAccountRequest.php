@@ -28,7 +28,8 @@ class UpdateAccountRequest extends AbstractBaseRequest
     {
         return [
             'username' => ['sometimes','max:48', new UniqueIdentity($this->model())],
-            'name' => ['sometimes', 'required', 'max:32']
+            'name' => ['sometimes', 'required', 'max:32'],
+            'email' => ['sometimes', 'email'],
         ];
     }
 
@@ -60,6 +61,12 @@ class UpdateAccountRequest extends AbstractBaseRequest
         if ($this->has('name')) {
             $user->update(['name' => $this->get('name')]);
             $messageBag->add('name', __('Your display name has been updated'));
+            $persisted = true;
+        }
+
+        if ($this->has('email')) {
+            $user->update(['email' => $this->get('email')]);
+            $messageBag->add('email', __('Your email address has been updated and a verification email sent'));
             $persisted = true;
         }
 

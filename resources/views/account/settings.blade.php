@@ -70,23 +70,33 @@
                 </form>
                 <!-- ./ display name -->
 
-                <!-- Display Name -->
+                <!-- Email -->
                 <form method="post" action="{{ route('user.settings.update') }}">
                     @csrf
                     <div class="card mb-5">
                         <div class="card-body">
                             <h2>{{ __('Email Address') }}</h2>
                             Please enter your name or a display name you are comfortable with being public.
-                            <input name="email" type="text" class="form-control mt-3" placeholder="me@example.com" aria-label="{{ __('Email Address') }}" aria-describedby="email-extra">
-                            <small id="email-extra" class="form-text text-muted">We will email you to verify this change.</small>
+                            <input name="email" type="text" class="form-control mt-3 {{ $errors->has('email') ? 'is-invalid' : ($messages->has('email') ? 'is-valid' : '') }}" placeholder="me@example.com" value="{{ old('email', $user->email ?? '') }}" aria-label="{{ __('Email Address') }}" aria-describedby="email-extra">
+
+                            @if ($error = $errors->first('email'))
+                                <small id="email-extra" class="form-text text-danger">{{ $error }}</small>
+                            @elseif($msg = $messages->first('email'))
+                                <small id="email-extra" class="form-text text-success">{{ $msg }}</small>
+                            @else
+                                <small id="email-extra" class="form-text text-muted">{{ __('We will email you to verify this change.') }}</small>
+                            @endif
                         </div>
                         <div class="card-footer d-flex align-items-center">
                             <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>{{ __('More information') }}</small></a></span>
-                            <button type="submit" class="btn btn-sm btn-dark" disabled>{{ __('Save') }}</button>
+                            @if (!$user->hasVerifiedEmail() && !Session::get('resent', false))
+                            <button type="button" class="btn btn-sm btn-outline-dark mr-2" onclick="getElementById('verify-email-link').submit(); return false;">{{ __('Resend Validation Email') }}</button>
+                            @endif
+                            <button type="submit" class="btn btn-sm btn-dark">{{ __('Save') }}</button>
                         </div>
                     </div>
                 </form>
-                <!-- ./ display name -->
+                <!-- ./ email -->
 
                 <!-- Avatar -->
                 <form>
