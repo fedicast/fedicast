@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateAccountRequest;
 use Auth;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
+use Illuminate\Support\MessageBag;
 
 class UserController extends Controller
 {
@@ -30,5 +31,13 @@ class UserController extends Controller
             return redirect(route('user.overview', ['username' => Auth::user()->name]));
         }
         return view('account.overview');
+    }
+
+    public function actionUpdate(UpdateAccountRequest $request)
+    {
+        $messageBag = new MessageBag();
+        $request->persist($messageBag);
+        return redirect()->back()
+            ->with('messages', $messageBag);
     }
 }
