@@ -135,8 +135,8 @@
                             action is irreversible.
 
                             <div class="form-check border-top mt-3 pt-3">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                <label class="form-check-label" for="defaultCheck1">
+                                <input name="i-understand" class="form-check-input" type="checkbox" value="1" id="delete-account-check" onchange="getElementById('delete-account-btn').disabled = !this.checked">
+                                <label class="form-check-label" for="delete-account-check">
                                     I understand that by requesting account deletion all account data will be permanently destroyed.
                                 </label>
                             </div>
@@ -144,7 +144,7 @@
                         </div>
                         <div class="card-footer d-flex align-items-center">
                             <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>{{ __('More information') }}</small></a></span>
-                            <button type="submit" class="btn btn-sm btn-danger" disabled>Request account deletion</button>
+                            <button id="delete-account-btn" type="submit" class="btn btn-sm btn-danger" disabled>Request account deletion</button>
                         </div>
                     </div>
                 </form>
