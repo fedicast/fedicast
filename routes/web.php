@@ -31,6 +31,7 @@ Route::view('/support/documentation/api/fedicast', 'documentation.api.fedicast')
 Route::view('/legal/privacy', 'legal.privacy')->name('legal.privacy');
 Route::view('/legal/toc', 'legal.toc')->name('legal.toc');
 Route::view('/legal/coc', 'legal.coc')->name('legal.coc');
+Route::view('/post/account-deletion', 'account.post-deletion')->name('account.post-deletion');
 
 Route::view('/blog', 'blog')->name('blog');
 

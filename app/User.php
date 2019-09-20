@@ -39,6 +39,8 @@ use Illuminate\Support\Str;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property \Illuminate\Support\Carbon|null $delete_after
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereDeleteAfter($value)
  */
 class User extends Authenticatable implements MustVerifyEmail, Nameable
 {
@@ -69,6 +71,7 @@ class User extends Authenticatable implements MustVerifyEmail, Nameable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'delete_after' => 'datetime'
     ];
 
     /**

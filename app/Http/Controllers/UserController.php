@@ -45,5 +45,7 @@ class UserController extends Controller
     public function actionDelete (DeleteAccountRequest $request)
     {
         $request->persist();
+        Auth::logout();
+        return redirect()->route('account.post-deletion');
     }
 }

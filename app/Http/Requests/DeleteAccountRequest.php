@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 
 use App\Rules\UniqueIdentity;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Support\MessageBag;
 
 class DeleteAccountRequest extends AbstractBaseRequest
@@ -48,6 +49,7 @@ class DeleteAccountRequest extends AbstractBaseRequest
     public function persist(MessageBag $messageBag = null): bool
     {
         $user = $this->model();
-        return true;
+        $user->delete_after = Carbon::now()->addWeeks(2);
+        return $user->save();
     }
 }
