@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\MessageBag;
 
 abstract class AbstractBaseRequest extends FormRequest
 {
@@ -17,9 +18,10 @@ abstract class AbstractBaseRequest extends FormRequest
     /**
      * This method persists the model with any changes required for this request.
      *
+     * @param MessageBag $messageBag
      * @return bool
      */
-    public function persist(): bool
+    public function persist(MessageBag $messageBag): bool
     {
         return false;
     }
