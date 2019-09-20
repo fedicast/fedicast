@@ -27,7 +27,8 @@ class UpdateAccountRequest extends AbstractBaseRequest
     public function rules(): array
     {
         return [
-            'username' => ['sometimes','max:48', new UniqueIdentity($this->model())]
+            'username' => ['sometimes','max:48', new UniqueIdentity($this->model())],
+            'name' => ['sometimes', 'required', 'max:32']
         ];
     }
 
@@ -48,13 +49,20 @@ class UpdateAccountRequest extends AbstractBaseRequest
     public function persist(MessageBag $messageBag): bool
     {
         $user = $this->model();
+        $persisted = false;
 
         if ($this->has('username')) {
             $user->updateUsername($this->get('username'));
-            $messageBag->add('username', __('Your changes have been saved'));
-            return true;
+            $messageBag->add('username', __('Your username has been updated'));
+            $persisted = true;
         }
 
-        return false;
+        if ($this->has('name')) {
+            $user->update(['name' => $this->get('name')]);
+            $messageBag->add('name', __('Your display name has been updated'));
+            $persisted = true;
+        }
+
+        return $persisted;
     }
 }

@@ -20,7 +20,6 @@
                         <div class="card-body">
                             <h2>{{ __('Username') }}</h2>
                             This is your <em>optional</em> main url namespace on the FediCast platform.
-
                             <div class="input-group mt-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="domain-addon">fedicast.com/</span>
@@ -38,9 +37,9 @@
                         </div>
                         <div class="card-footer d-flex align-items-center">
                             <span class="flex-grow-1">
-                                <a href="#"><i class="icon-help"></i> <small>More information</small></a>
+                                <a href="#"><i class="icon-help"></i> <small>{{ __('More information') }}</small></a>
                             </span>
-                            <button type="submit" class="btn btn-sm btn-dark">Save</button>
+                            <button type="submit" class="btn btn-sm btn-dark">{{ __('Save') }}</button>
                         </div>
                     </div>
                 </form>
@@ -53,14 +52,19 @@
                         <div class="card-body">
                             <h2>{{ __('Display Name') }}</h2>
                             Please enter your name or a display name you are comfortable with being public.
+                            <input name="name" type="text" class="form-control mt-3 {{ $errors->has('name') ? 'is-invalid' : ($messages->has('name') ? 'is-valid' : '') }}" placeholder="Sam" value="{{ old('name', $user->name ?? '') }}" aria-label="{{ __('Display Name') }}" aria-describedby="display-name-extra">
 
-                            <input name="display_name" type="text" class="form-control mt-3" placeholder="Sam" aria-label="{{ __('Display Name') }}" aria-describedby="display-name-extra">
-
-                            <small id="display-name-extra" class="form-text text-muted">Please use a maximum of 32 characters.</small>
+                            @if ($error = $errors->first('name'))
+                                <small id="display-name-extra" class="form-text text-danger">{{ $error }}</small>
+                            @elseif($msg = $messages->first('name'))
+                                <small id="display-name-extra" class="form-text text-success">{{ $msg }}</small>
+                            @else
+                                <small id="display-name-extra" class="form-text text-muted">{{ __('Please use a maximum of 32 characters.') }}</small>
+                            @endif
                         </div>
                         <div class="card-footer d-flex align-items-center">
-                            <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>More information</small></a></span>
-                            <button type="submit" class="btn btn-sm btn-dark">Save</button>
+                            <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>{{ __('More information') }}</small></a></span>
+                            <button type="submit" class="btn btn-sm btn-dark">{{ __('Save') }}</button>
                         </div>
                     </div>
                 </form>
@@ -77,8 +81,8 @@
                             <small id="email-extra" class="form-text text-muted">We will email you to verify this change.</small>
                         </div>
                         <div class="card-footer d-flex align-items-center">
-                            <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>More information</small></a></span>
-                            <button type="submit" class="btn btn-sm btn-dark" disabled>Save</button>
+                            <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>{{ __('More information') }}</small></a></span>
+                            <button type="submit" class="btn btn-sm btn-dark" disabled>{{ __('Save') }}</button>
                         </div>
                     </div>
                 </form>
@@ -103,8 +107,8 @@
 
                         </div>
                         <div class="card-footer d-flex align-items-center">
-                            <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>More information</small></a></span>
-                            <button type="submit" class="btn btn-sm btn-dark">Save</button>
+                            <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>{{ __('More information') }}</small></a></span>
+                            <button type="submit" class="btn btn-sm btn-dark">{{ __('Save') }}</button>
                         </div>
                     </div>
                 </form>
@@ -129,7 +133,7 @@
 
                         </div>
                         <div class="card-footer d-flex align-items-center">
-                            <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>More information</small></a></span>
+                            <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>{{ __('More information') }}</small></a></span>
                             <button type="submit" class="btn btn-sm btn-danger" disabled>Request account deletion</button>
                         </div>
                     </div>
