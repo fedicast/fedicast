@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsernamesTable extends Migration
+class CreateIdentitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateUsernamesTable extends Migration
      */
     public function up()
     {
-        Schema::create('usernames', function (Blueprint $table) {
+        Schema::create('identities', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('username', 48);
+            $table->morphs('nameable');
+            $table->string('name', 48);
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->bigInteger('username_id')->nullable();
-            $table->foreign('username_id')
-                ->references('id')->on('usernames')
+            $table->bigInteger('identity_id')->nullable(); // the current identity
+            $table->foreign('identity_id')
+                ->references('id')->on('identities')
                 ->onDelete('null');
         });
     }
@@ -35,9 +36,9 @@ class CreateUsernamesTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('username_id');
+            $table->dropColumn('identity_id');
         });
 
-        Schema::dropIfExists('usernames');
+        Schema::dropIfExists('identities');
     }
 }
