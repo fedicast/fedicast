@@ -7,6 +7,9 @@
         <a class="dropdown-item" href="{{ route('user.overview') }}">
             {{ __('Dashboard') }}
         </a>
+        <a class="dropdown-item" href="{{ route('admin.overview') }}">
+            {{ __('Admin') }}
+        </a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="{{ route('user.settings') }}">
             {{ __('Account Settings') }}

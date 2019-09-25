@@ -62,6 +62,18 @@ Route::group(['middleware' => ['auth']], function(){
     Route::view('/~/account/plan', 'account.settings')->name('user.settings.plan');
 });
 
+/*
+|--------------------------------------------------------------------------
+| Static Authenticated Administrator Routes
+|--------------------------------------------------------------------------
+|
+| ...
+|
+*/
+
+Route::group(['middleware' => ['auth']], function(){
+    Route::view('/a/', 'admin.overview')->name('admin.overview');
+});
 
 /*
 |--------------------------------------------------------------------------
