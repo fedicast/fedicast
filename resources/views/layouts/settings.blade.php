@@ -13,7 +13,7 @@
                 <a class="nav-link" href="{{ route('user.settings.plan') }}">{{ __('Plan') }}</a>
             </li>
             <li class="nav-item  mr-2">
-                <a class="nav-link" href="{{ route('user.overview', ['username' => \Auth::user()->name]) }}">{{ __('Dashboard') }}</a>
+                <a class="nav-link" href="{{ route('user.overview') }}">{{ __('Dashboard') }}</a>
             </li>
         </ul>
     </div>

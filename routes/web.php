@@ -37,6 +37,8 @@ Route::view('/blog', 'blog')->name('blog');
 
 Auth::routes(['verify' => true]);
 
+Route::get('/@/{username}', 'UserController@actionPublicProfile')->name('user.public.profile');
+
 /*
 |--------------------------------------------------------------------------
 | Static Authenticated Routes
@@ -49,14 +51,15 @@ Auth::routes(['verify' => true]);
 */
 
 Route::group(['middleware' => ['auth']], function(){
-    Route::get('/~/{username?}', 'UserController@actionOverview')->name('user.overview');
-    Route::view('/~/{username}/podcasts', 'account.podcasts')->name('user.podcasts');
-    Route::view('/~/{username}/domains', 'account.domains')->name('user.domains');
-    Route::view('/~/{username}/usage', 'account.usage')->name('user.usage');
+    Route::view('/~/', 'account.overview')->name('user.overview');
 
-    Route::view('/account', 'account.settings')->name('user.settings');
-    Route::view('/account/billing', 'account.settings')->name('user.settings.billing');
-    Route::view('/account/plan', 'account.settings')->name('user.settings.plan');
+    Route::view('/~/podcasts', 'account.podcasts')->name('user.podcasts');
+    Route::view('/~/domains', 'account.domains')->name('user.domains');
+    Route::view('/~/usage', 'account.usage')->name('user.usage');
+
+    Route::view('/~/account', 'account.settings')->name('user.settings');
+    Route::view('/~/account/billing', 'account.settings')->name('user.settings.billing');
+    Route::view('/~/account/plan', 'account.settings')->name('user.settings.plan');
 });
 
 
