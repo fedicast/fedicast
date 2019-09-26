@@ -17,6 +17,8 @@
                     </div>
                 @endfor
 
+                <a href="{{ route('user.notifications') }}">View more</a>
+
             </div>
             <div class="col clearfix">
                 <div class="d-flex flex-row align-items-center mb-4" style="min-height:45px;">
@@ -47,7 +49,7 @@
                     </li>
                 </ul>
 
-                <a href="#" class="float-right">View more activity</a>
+                <a href="{{ route('user.activity') }}" class="float-right">View more activity</a>
             </div>
         </div>
     </div>

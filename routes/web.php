@@ -50,16 +50,19 @@ Route::get('/@/{username}', 'UserController@actionPublicProfile')->name('user.pu
 |
 */
 
-Route::group(['middleware' => ['auth']], function(){
-    Route::view('/~/', 'account.overview')->name('user.overview');
+Route::group(['middleware' => ['auth'], 'prefix' => '~'], function(){
+    Route::view('/', 'account.overview')->name('user.overview');
 
-    Route::view('/~/podcasts', 'account.podcasts')->name('user.podcasts');
-    Route::view('/~/domains', 'account.domains')->name('user.domains');
-    Route::view('/~/usage', 'account.usage')->name('user.usage');
+    Route::view('/podcasts', 'account.podcasts')->name('user.podcasts');
+    Route::view('/domains', 'account.domains')->name('user.domains');
+    Route::view('/usage', 'account.usage')->name('user.usage');
+    Route::view('/notifications', 'account.notifications')->name('user.notifications');
+    Route::view('/activity', 'account.activity')->name('user.activity');
 
-    Route::view('/~/account', 'account.settings')->name('user.settings');
-    Route::view('/~/account/billing', 'account.settings')->name('user.settings.billing');
-    Route::view('/~/account/plan', 'account.settings')->name('user.settings.plan');
+
+    Route::view('/account', 'account.settings')->name('user.settings');
+    Route::view('/account/billing', 'account.settings')->name('user.settings.billing');
+    Route::view('/account/plan', 'account.settings')->name('user.settings.plan');
 });
 
 /*
