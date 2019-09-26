@@ -40,6 +40,12 @@
                     <span class="badge">3</span>
                     <span class="sr-only">unread messages</span>
                 </a>
+
+                <a href="#" class="btn btn-sm btn-light w-100 text-left mb-1 d-flex align-items-center">
+                    <span class="flex-grow-1">Team Name / Podcast Name</span>
+                    <span class="badge">3</span>
+                    <span class="sr-only">unread messages</span>
+                </a>
             </div>
 
             <div class="col">
