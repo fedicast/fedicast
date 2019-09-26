@@ -34,6 +34,11 @@ class UserController extends Controller
         return view('account.overview');
     }
 
+    public function actionReleaseUsername()
+    {
+        // @todo
+    }
+
     public function actionUpdate(UpdateAccountRequest $request)
     {
         $messageBag = new MessageBag();
