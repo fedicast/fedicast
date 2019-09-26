@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app-old')
 
 @section('sub-navigation')
     <div class="collapse navbar-collapse" id="subNavigation">

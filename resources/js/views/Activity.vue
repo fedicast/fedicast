@@ -1,19 +1,7 @@
-@extends('layouts.app')
-
-@section('sub-navigation')
-    <div class="collapse navbar-collapse" id="subNavigation">
-        <ul class="navbar-nav with-bottom-bordered-current mr-auto">
-            <li class="nav-item current-nav-item mr-2">
-                <a class="nav-link" href="{{ route('user.activity') }}">{{ __('Your Activity') }}</a>
-            </li>
-        </ul>
-    </div>
-@endsection
-
-@section('content')
+<template>
     <div class="container py-6">
 
-        <strong>{{ date('F, Y') }}</strong>
+        <strong>September, 2019</strong>
         <ul class="list-group list-g list-group-flush mb-5">
             <li class="list-group-item bg-transparent">
                 You logged in from the browser xyz
@@ -37,7 +25,7 @@
             </li>
         </ul>
 
-        <strong>{{ date('F, Y') }}</strong>
+        <strong>August, 2019</strong>
         <ul class="list-group list-g list-group-flush mb-5">
             <li class="list-group-item bg-transparent">
                 You logged in from the browser xyz
@@ -60,6 +48,5 @@
                 <span class="d-inline-block text-muted float-right">4d</span>
             </li>
         </ul>
-
     </div>
-@endsection
+</template>

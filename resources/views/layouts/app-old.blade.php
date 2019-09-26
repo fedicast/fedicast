@@ -45,7 +45,15 @@
         </div>
     </nav>
 
-    <main id="app">
+    @hasSection('sub-navigation')
+        <nav class="navbar navbar-expand-md bg-white border-bottom pb-0 {{ !isset($darkBg) ? 'navbar-light' : 'navbar-dark' }}">
+            <div class="container">
+                @yield('sub-navigation')
+            </div>
+        </nav>
+    @endif
+
+    <main id="app" class="flex-shrink-0">
         @yield('content')
     </main>
 

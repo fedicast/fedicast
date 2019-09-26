@@ -1,29 +1,25 @@
-@extends('layouts.account')
-
-@section('content')
+<template>
     <div class="container py-6">
         <div class="row">
             <div class="col-4">
                 <div class="d-flex flex-row align-items-center mb-4" style="min-height:45px;">
-                    <h3 class="mb-0 flex-grow-1">{{ __('Notifications') }}</h3>
+                    <h3 class="mb-0 flex-grow-1">{{'messages.notifications' | trans }}</h3>
                 </div>
 
-                @for($x=0; $x<6; $x++)
-                    <div class="d-flex align-items-center pb-3 border-bottom my-3">
-                        <img src="https://i.pravatar.cc/75?{{rand(0, 1000)}}" width="35" height="35" class="rounded-circle flex-shrink-0" />
-                        <span class="flex-grow-1 ml-3">
+
+                <div class="d-flex align-items-center pb-3 border-bottom my-3">
+                    <img src="https://i.pravatar.cc/75?" width="35" height="35" class="rounded-circle flex-shrink-0" />
+                    <span class="flex-grow-1 ml-3">
                             <strong>some_user_94</strong> favourited an episode on <strong>booming beats</strong>, 4 minutes ago
                         </span>
-                    </div>
-                @endfor
+                </div>
 
-                <a href="{{ route('user.notifications') }}">View more</a>
-
+                <router-link :to="{ name: 'notifications'}">{{'messages.view more' | trans }}</router-link>
             </div>
             <div class="col clearfix">
                 <div class="d-flex flex-row align-items-center mb-4" style="min-height:45px;">
-                    <h3 class="mb-0 flex-grow-1">{{ __('Recent Activity') }}</h3>
-                    <a href="#" class="btn btn-lg btn-primary">{{ __('New Podcast') }}</a>
+                    <h3 class="mb-0 flex-grow-1">{{'messages.recent activity' | trans }}</h3>
+                    <a href="#" class="btn btn-lg btn-primary">{{'messages.new podcast' | trans }}</a>
                 </div>
 
                 <ul class="list-group list-group-flush mb-3">
@@ -49,8 +45,8 @@
                     </li>
                 </ul>
 
-                <a href="{{ route('user.activity') }}" class="float-right">View more activity</a>
+                <router-link class="float-right" :to="{ name: 'activity'}">{{'messages.view more extra' | trans({extra: 'activity'}) }}</router-link>
             </div>
         </div>
     </div>
-@endsection
+</template>

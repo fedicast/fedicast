@@ -11,5 +11,18 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
+// webpack.mix.js
+mix.webpackConfig({
+    module: {
+        rules: [
+            {
+                // Matches all PHP or JSON files in `resources/lang` directory.
+                test: /resources[\\\/]lang.+\.(php|json)$/,
+                loader: 'laravel-localization-loader',
+            }
+        ]
+    }
+});
+
+mix.js('resources/js/main.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');

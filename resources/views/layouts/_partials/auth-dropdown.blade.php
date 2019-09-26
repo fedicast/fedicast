@@ -11,7 +11,7 @@
             {{ __('Admin') }}
         </a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="{{ route('user.settings') }}">
+        <a class="dropdown-item" href="{{ route('user.app', ['vue' => 'account']) }}">
             {{ __('Account Settings') }}
         </a>
         <a class="dropdown-item" href="#">
