@@ -3,18 +3,20 @@
 @section('content')
     <div class="container py-6">
         <div class="row">
-            <div class="col-3">
+            <div class="col-4">
                 <div class="d-flex flex-row align-items-center mb-4" style="min-height:45px;">
                     <h3 class="mb-0 flex-grow-1">{{ __('Notifications') }}</h3>
                 </div>
 
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item bg-transparent">Cras justo odio</li>
-                    <li class="list-group-item bg-transparent">Dapibus ac facilisis in</li>
-                    <li class="list-group-item bg-transparent">Morbi leo risus</li>
-                    <li class="list-group-item bg-transparent">Porta ac consectetur ac</li>
-                    <li class="list-group-item bg-transparent">Vestibulum at eros</li>
-                </ul>
+                @for($x=0; $x<6; $x++)
+                    <div class="d-flex align-items-center pb-3 border-bottom my-3">
+                        <img src="https://i.pravatar.cc/75?{{rand(0, 1000)}}" width="35" height="35" class="rounded-circle flex-shrink-0" />
+                        <span class="flex-grow-1 ml-3">
+                            <strong>some_user_94</strong> favourited an episode on <strong>booming beats</strong>, 4 minutes ago
+                        </span>
+                    </div>
+                @endfor
+
             </div>
             <div class="col clearfix">
                 <div class="d-flex flex-row align-items-center mb-4" style="min-height:45px;">
