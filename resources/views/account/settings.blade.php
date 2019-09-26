@@ -10,6 +10,34 @@
         $messages = session()->get('messages', new \Illuminate\Support\MessageBag());
     ?>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">{{ __('Reserved usernames limit') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        You have reached the maximum number of reserved usernames; because name changes result in
+                        previous username urls being redirected to your current one in order to avoid abuse
+                        this has been limited to six.
+                    </p>
+                    <p>
+                        If you would like to change your username again, please check the history and release an
+                        older username you're not using.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container py-6">
         <div class="row justify-content-center">
             <div class="col-7">
@@ -35,11 +63,48 @@
                             <small class="form-text text-muted">{{ __('Please use a maximum of 48 characters and no spaces.') }}</small>
                             @endif
                         </div>
+
+                        <div class="collapse" id="usernameHistory">
+                            <table class="table table-dark table-striped ">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Chosen</th>
+                                    <th scope="col">Retained Until</th>
+                                    <th scope="col">&nbsp;</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($user->identities as $identity)
+                                <tr>
+                                    <th scope="row">{{ $identity->name }}</th>
+                                    <td>{{ $identity->created_at->ago() }}</td>
+                                    <td>{{ $identity->id == $user->identity_id ? __('current username') : $identity->created_at->addYears(3)->ago() }}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-light" {{ ($identity->id != $user->identity_id) ? 'disabled' : '' }}disabled>{{__('Release')}}</button>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
                         <div class="card-footer d-flex align-items-center">
                             <span class="flex-grow-1">
                                 <a href="#"><i class="icon-help"></i> <small>{{ __('More information') }}</small></a>
                             </span>
+
+                            @if($user->identities->count() > 0)
+                            <button class="btn btn-sm btn-outline-dark mr-2" type="button" data-toggle="collapse" data-target="#usernameHistory" aria-expanded="false" aria-controls="usernameHistory">
+                                {{ __('History') }}
+                            </button>
+                            @endif
+
+                            @if($user->identities->count() < 6)
                             <button type="submit" class="btn btn-sm btn-dark">{{ __('Save') }}</button>
+                            @else
+                            <button type="button" class="btn btn-sm btn-dark disabled" data-toggle="modal" data-target="#exampleModalCenter">{{ __('Save') }}</button>
+                            @endif
                         </div>
                     </div>
                 </form>
