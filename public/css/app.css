@@ -16629,6 +16629,14 @@ readers do not read off random characters that represent icons */
   background: beige;
 }
 
+.btn-xs,
+.btn-group-xs > .btn {
+  padding: 0.15rem 0.3rem;
+  font-size: 0.5875rem;
+  line-height: 1.3;
+  border-radius: 0.2rem;
+}
+
 .welcome-banner {
   color: #626258;
 }
