@@ -16,7 +16,7 @@
         </div>
         <div class="card-footer d-flex align-items-center">
             <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>{{ 'messages.more information' | trans | ucfirst }}</small></a></span>
-            <button :disabled="!canPersist" v-on:click="persist" type="button" class="btn btn-sm btn-dark">{{ 'messages.request account deletion' | trans | ucfirst }}</button>
+            <button :disabled="!canPersist" v-on:click="persist" type="button" class="btn btn-sm btn-danger">{{ 'messages.request account deletion' | trans | ucfirst }}</button>
         </div>
     </div>
 </template>

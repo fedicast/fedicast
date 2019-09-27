@@ -2,7 +2,7 @@
     <div class="card mb-5">
         <div class="card-body">
             <h2>{{'messages.email address' | trans | ucfirst }}</h2>
-            Please enter an email address we can use for password resets and opt-in notifications.
+            <slot></slot>
             <input :disabled="persisting" v-on:keypress="reset" name="email" type="text" :class="{'is-invalid': hasError, 'is-valid' : hasSaved}" v-model="email" class="form-control mt-3" placeholder="me@example.com" :aria-label="'messages.email address' | trans | ucfirst" aria-describedby="email-extra">
             <form-messaging :has-error="hasError" :has-saved="hasSaved" :message="message" text="We will email you to verify this change."/>
         </div>

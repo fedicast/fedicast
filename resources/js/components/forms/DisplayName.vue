@@ -2,7 +2,7 @@
     <div class="card mb-5">
         <div class="card-body">
             <h2>{{'messages.display name' | trans | ucfirst }}</h2>
-            Please enter your name or a display name you are comfortable with being public.
+            <slot></slot>
             <input :disabled="persisting" v-on:keypress="reset" name="name" type="text" :class="{'is-invalid': hasError, 'is-valid' : hasSaved}" class="form-control mt-3" v-model="displayName" placeholder="Sam" :aria-label="'messages.display name' | trans | ucfirst" aria-describedby="display-name-extra">
 
             <form-messaging :has-error="hasError" :has-saved="hasSaved" :message="message" text="Please use a maximum of 32 characters."/>

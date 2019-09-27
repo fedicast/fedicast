@@ -6,8 +6,7 @@
 
             <div class="d-flex">
                 <div class="flex-grow-1">
-                    This is your display image, its optional.<br>
-                    Click on the circle to change yours.
+                    <slot></slot>
                 </div>
                 <div>
                     <img src="https://i.pravatar.cc/75" width="75" height="75" class="rounded-circle" />
