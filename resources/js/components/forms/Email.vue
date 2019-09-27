@@ -25,15 +25,11 @@
             hasSaved: false,
             persisting: false,
             message: '',
-            identities: [],
         }},
 
         computed: {
             hasVerifiedEmail () {
                 return false;
-            },
-            hasHistory () {
-                return this.identities.length > 0;
             },
             canPersist () {
                 return this.email.length > 0;

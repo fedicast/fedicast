@@ -25,13 +25,9 @@
             hasSaved: false,
             persisting: false,
             message: '',
-            identities: [],
         }},
 
         computed: {
-            hasHistory () {
-                return this.identities.length > 0;
-            },
             canPersist () {
                 return this.displayName.length > 0;
             }
