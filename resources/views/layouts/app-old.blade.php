@@ -53,7 +53,7 @@
         </nav>
     @endif
 
-    <main id="app" class="flex-shrink-0">
+    <main class="flex-shrink-0">
         @yield('content')
     </main>
 

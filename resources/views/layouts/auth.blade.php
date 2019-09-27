@@ -1,7 +1,6 @@
 @extends('layouts.base')
 @section('base.body')
-<div id="app">
-
+<div>
     <nav class="navbar container py-5 justify-content-center">
         <a class="navbar-brand mr-0" href="{{ url('/') }}" style="font-size: 2.7rem;">
             <img src="{{ asset('/images/wifi.svg') }}" width="60" height="60" class="d-inline-block align-top" alt="">
