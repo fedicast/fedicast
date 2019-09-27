@@ -10,9 +10,7 @@
                 <input :disabled="persisting" v-on:keypress="reset" name="username" type="text" :class="{'is-invalid': hasError, 'is-valid' : hasSaved}" class="form-control" v-model="username" placeholder="username" aria-label="Username" aria-describedby="domain-addon">
             </div>
 
-            <small v-if="hasError && message" class="form-text text-danger">{{ message }}</small>
-            <small v-else-if="hasSaved && message" class="form-text text-succes">{{ message }}</small>
-            <small v-else class="form-text text-muted">Please use a maximum of 48 characters and no spaces.</small>
+            <form-messaging :has-error="hasError" :has-saved="hasSaved" :message="message" text="Please use a maximum of 48 characters and no spaces."/>
         </div>
 
         <div v-if="hasHistory" class="collapse" id="usernameHistory">
@@ -53,8 +51,10 @@
 </template>
 
 <script>
+    import FormMessaging from "./partials/Messaging";
     export default {
         name: 'username-form',
+        components: {FormMessaging},
         data () { return {
             username: '',
             hasError: false,
@@ -81,7 +81,7 @@
             reset () {
                 this.hasSaved = false;
                 this.hasError = false;
-                this.message = false;
+                this.message = '';
             }
         }
     }

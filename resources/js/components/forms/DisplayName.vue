@@ -5,9 +5,7 @@
             Please enter your name or a display name you are comfortable with being public.
             <input :disabled="persisting" v-on:keypress="reset" name="name" type="text" :class="{'is-invalid': hasError, 'is-valid' : hasSaved}" class="form-control mt-3" v-model="displayName" placeholder="Sam" :aria-label="'messages.display name' | trans | ucfirst" aria-describedby="display-name-extra">
 
-            <small v-if="hasError && message" class="form-text text-danger">{{ message }}</small>
-            <small v-else-if="hasSaved && message" class="form-text text-succes">{{ message }}</small>
-            <small v-else class="form-text text-muted">Please use a maximum of 32 characters.</small>
+            <form-messaging :has-error="hasError" :has-saved="hasSaved" :message="message" text="Please use a maximum of 32 characters."/>
         </div>
         <div class="card-footer d-flex align-items-center">
             <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>{{ 'messages.more information' | trans | ucfirst }}</small></a></span>
@@ -17,8 +15,10 @@
 </template>
 
 <script>
+    import FormMessaging from "./partials/Messaging";
     export default {
         name: 'display-name-form',
+        components: {FormMessaging},
         data () { return {
             displayName: '',
             hasError: false,

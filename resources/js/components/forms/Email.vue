@@ -4,10 +4,7 @@
             <h2>{{'messages.email address' | trans | ucfirst }}</h2>
             Please enter an email address we can use for password resets and opt-in notifications.
             <input :disabled="persisting" v-on:keypress="reset" name="email" type="text" :class="{'is-invalid': hasError, 'is-valid' : hasSaved}" v-model="email" class="form-control mt-3" placeholder="me@example.com" :aria-label="'messages.email address' | trans | ucfirst" aria-describedby="email-extra">
-
-            <small v-if="hasError && message" class="form-text text-danger">{{ message }}</small>
-            <small v-else-if="hasSaved && message" class="form-text text-succes">{{ message }}</small>
-            <small v-else class="form-text text-muted">We will email you to verify this change.</small>
+            <form-messaging :has-error="hasError" :has-saved="hasSaved" :message="message" text="We will email you to verify this change."/>
         </div>
         <div class="card-footer d-flex align-items-center">
             <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>{{ 'messages.more information' | trans | ucfirst }}</small></a></span>
@@ -18,8 +15,10 @@
 </template>
 
 <script>
+    import FormMessaging from "./partials/Messaging";
     export default {
         name: 'email-form',
+        components: {FormMessaging},
         data () { return {
             email: '',
             hasError: false,
