@@ -6,6 +6,7 @@
                 <display-name-form/>
                 <email-form/>
                 <avatar-form/>
+                <delete-account-form/>
             </div>
         </div>
     </div>
@@ -16,9 +17,11 @@
     import DisplayNameForm from '../components/forms/DisplayName';
     import EmailForm from '../components/forms/Email';
     import AvatarForm from "../components/forms/Avatar";
+    import DeleteAccountForm from "../components/forms/Delete";
 
     export default {
         components: {
+            DeleteAccountForm,
             AvatarForm,
             UsernameForm,
             DisplayNameForm,
