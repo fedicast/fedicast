@@ -1,10 +1,6 @@
 <template>
     <div :class="{'border-top': hasSubNavigation}">
-        <router-view name="subNavigation"></router-view>
-
-        <main id="app" class="flex-shrink-0">
-            <router-view></router-view>
-        </main>
+        <router-view/>
     </div>
 </template>
 

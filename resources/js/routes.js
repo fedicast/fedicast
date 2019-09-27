@@ -11,67 +11,87 @@ import AccountSubNavigation from './views/partials/sub-navigation/Account'
 import SettingsSubNavigation from './views/partials/sub-navigation/Settings'
 import NotificationsSubNavigation from './views/partials/sub-navigation/Notifications';
 import ActivitySubNavigation from './views/partials/sub-navigation/Activity';
+import CreatePodcast from './views/podcast/Create';
 
+import EmptyRouterView from './views/EmptyRouterView';
 
 export default [
     {
-        path: '/~/',
-        name: 'overview',
-        components: {
-            default: Overview,
-            subNavigation: AccountSubNavigation,
-        }
-    },
-    {
-        path: '/~/podcasts',
-        name: 'podcasts',
-        components: {
-            default: Podcasts,
-            subNavigation: AccountSubNavigation,
-        }
-    },
-    {
-        path: '/~/domains',
-        name: 'domains',
-        components: {
-            default: Domains,
-            subNavigation: AccountSubNavigation,
-        }
-    },
-    {
-        path: '/~/usage',
-        name: 'usage',
-        components: {
-            default: Usage,
-            subNavigation: AccountSubNavigation,
-        }
-    },
-    {
-        path: '/~/notifications',
-        name: 'notifications',
-        components: {
-            default: Notifications,
-            subNavigation: NotificationsSubNavigation,
-        }
-    },
-    {
-        path: '/~/activity',
-        name: 'activity',
-        components: {
-            default: Activity,
-            subNavigation: ActivitySubNavigation,
-        }
-    },
-    {
-        path: '/~/account',
-        name: 'settings',
-        components: {
-            default: Settings,
-            subNavigation: SettingsSubNavigation,
-        },
+        path: '/~',
+        component: EmptyRouterView,
         children: [
-            {path: 'billing', 'name': 'settings.billing', component: SettingsBilling},
-            {path: 'plan', 'name': 'settings.plan', component: SettingsPlan},
+            {
+                path: '',
+                name: 'overview',
+                components: {
+                    default: Overview,
+                    subNavigation: AccountSubNavigation,
+                },
+            },
+            {
+                path: 'podcasts',
+                components: {
+                    default: EmptyRouterView,
+                    subNavigation: AccountSubNavigation,
+                },
+                children: [
+                    {
+                        path: '',
+                        name: 'podcasts',
+                        component: Podcasts
+                    },
+                    {
+                        path: 'create',
+                        name: 'podcasts.create',
+                        component: CreatePodcast
+                    },
+                ]
+            },
+            {
+                path: 'domains',
+                name: 'domains',
+                components: {
+                    default: Domains,
+                    subNavigation: AccountSubNavigation,
+                }
+            },
+            {
+                path: 'usage',
+                name: 'usage',
+                components: {
+                    default: Usage,
+                    subNavigation: AccountSubNavigation,
+                }
+            },
+            {
+                path: 'notifications',
+                name: 'notifications',
+                components: {
+                    default: Notifications,
+                    subNavigation: NotificationsSubNavigation,
+                }
+            },
+            {
+                path: 'activity',
+                name: 'activity',
+                components: {
+                    default: Activity,
+                    subNavigation: ActivitySubNavigation,
+                }
+            },
+            {
+                path: 'account',
+                components: {
+                    default: EmptyRouterView,
+                    subNavigation: SettingsSubNavigation,
+                },
+                children: [
+                    {path: '', name: 'settings', component: Settings},
+                    {path: 'billing', 'name': 'settings.billing', component: SettingsBilling},
+                    {path: 'plan', 'name': 'settings.plan', component: SettingsPlan},
+                ]
+            },
         ]
     },
+
 ]
