@@ -2,7 +2,7 @@
     <div class="card mb-5">
         <div class="card-body">
             <h2>{{'messages.username' | trans | ucfirst }}</h2>
-            This is your <em>optional</em> main url namespace on the FediCast platform.
+            <slot></slot>
             <div class="input-group mt-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="domain-addon">fedicast.com/</span>
@@ -45,7 +45,7 @@
                 {{ 'messages.history' | trans | ucfirst }}
             </button>
 
-            <button :disabled="persisting || !canPersist" v-on:click="persist" type="button" class="btn btn-sm btn-dark">{{ 'messages.save' | trans | ucfirst }}</button>
+            <button :disabled="persisting || !canPersist" v-on:click="persist" type="button" class="btn btn-sm btn-dark">{{ persistBtnText | trans | ucfirst }}</button>
         </div>
     </div>
 </template>
@@ -55,6 +55,12 @@
     export default {
         name: 'username-form',
         components: {FormMessaging},
+        props: {
+            persistBtnText: {
+                type: String,
+                default: 'messages.save'
+            }
+        },
         data () { return {
             username: '',
             hasError: false,
