@@ -29,7 +29,7 @@
                     <td>{{ identity.ago }}</td>
                     <td>{{ identity.until }}</td>
                     <td>
-                        <button class="btn btn-sm btn-outline-light">{{__('Release')}}</button>
+                        <button class="btn btn-sm btn-outline-light">{{'messages.release' | trans | ucfirst }}</button>
                     </td>
                 </tr>
                 </tbody>
