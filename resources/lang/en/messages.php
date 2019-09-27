@@ -1,5 +1,4 @@
 <?php return [
-
     'notifications' => 'Notifications',
     'recent activity' => 'Recent Activity',
     'new podcast' => 'New Podcast',
@@ -12,5 +11,6 @@
     'all notifications' => 'all notifications',
     'username' => 'username',
     'save' => 'save',
-    'more information' => 'more information'
+    'more information' => 'more information',
+    'display name' => 'display name'
 ];
