@@ -11,6 +11,7 @@
     'all notifications' => 'all notifications',
     'username' => 'username',
     'save' => 'save',
+    'next' => 'next',
     'more information' => 'more information',
     'display name' => 'display name'
 ];
