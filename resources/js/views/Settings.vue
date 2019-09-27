@@ -2,7 +2,7 @@
     <div class="container py-6">
         <div class="row justify-content-center">
             <div class="col-7">
-                <username-form/>
+                <username-form>This is your <em>optional</em> main url namespace on the FediCast platform.</username-form>
                 <display-name-form/>
                 <email-form/>
                 <avatar-form/>
