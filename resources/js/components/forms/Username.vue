@@ -54,6 +54,14 @@
             persistBtnText: {
                 type: String,
                 default: 'messages.save'
+            },
+            minLength: {
+                type: Number,
+                default: 0
+            },
+            maxLength: {
+                type: Number,
+                default: 48
             }
         },
         data () { return {
@@ -69,7 +77,7 @@
                 return this.identities.length > 0;
             },
             triState () {
-                if (this.username.length >48) {
+                if (this.username.length < this.minLength || this.username.length > this.maxLength) {
                     return -1;
                 }
 
@@ -88,8 +96,11 @@
                 if (this.triState < 0 && this.message.length > 0) { return this.message; }
 
                 // Basic client side validation
-                if (this.username.length > 48) {
-                    return 'Please use a maximum of 48 characters';
+                if (this.username.length < this.minLength) {
+                    return 'Please enter a username';
+                }
+                if (this.username.length > this.maxLength) {
+                    return `Please use a maximum of ${this.maxLength} characters`;
                 }
                 return '';
             }
