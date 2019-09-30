@@ -3,12 +3,12 @@
         <div class="card-body">
             <label for="text-input" class="h2 d-block">{{ label | trans | ucfirst }}</label>
             <slot name="description"></slot>
-            <input id="text-input" v-bind:value="value" v-on:change="$emit('change', $event.target.value)" v-on:keypress="$emit('change', $event.target.value)" :disabled="disabled" name="name" type="text" :class="{'is-invalid': triState < 0, 'is-valid' : triState > 0}" class="form-control mt-3" :placeholder="placeholder" :aria-label="label" aria-describedby="display-name-extra">
+            <input id="text-input" v-bind:value="value" v-on:focusout="$emit('change', $event.target.value)" v-on:keypress="$emit('change', $event.target.value)" :disabled="disabled" name="name" type="text" :class="{'is-invalid': triState < 0, 'is-valid' : triState > 0}" class="form-control mt-3" :placeholder="placeholder" :aria-label="label" aria-describedby="display-name-extra">
             <form-messaging :has-error="triState < 0" :has-saved="triState > 0" :message="message" :text="defaultMessage"/>
         </div>
         <div class="card-footer d-flex align-items-center">
             <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>{{ 'messages.more information' | trans | ucfirst }}</small></a></span>
-            <slot name="footer"></slot>
+            <slot name="buttons"></slot>
             <button :disabled="disabled || triState < 0" v-on:click="$emit('submit', value)" type="button" class="btn btn-sm btn-dark">{{ saveLabel | trans | ucfirst }}</button>
         </div>
     </div>
