@@ -1,60 +1,55 @@
 <template>
-    <div class="card mb-5">
-        <div class="card-body">
-            <h2>{{'messages.username' | trans | ucfirst }}</h2>
-            <slot></slot>
-            <div class="input-group mt-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="domain-addon">fedicast.com/</span>
-                </div>
-                <input :disabled="persisting" v-on:keypress="reset" name="username" type="text" :class="{'is-invalid': hasError, 'is-valid' : hasSaved}" class="form-control" v-model="username" placeholder="username" aria-label="Username" aria-describedby="domain-addon">
+    <text-input-form
+        id="username"
+        label="messages.username"
+        prefix="fedicast.com/"
+        v-model="username"
+        placeholder="username"
+        default-message="Please use a maximum of 48 characters and no spaces."
+        :invalid-feedback="invalidFeedback"
+        :valid-feedback="validFeedback"
+        :tri-state="triState"
+        :disabled="persisting"
+        :save-label="persisting ? 'please wait' : persistBtnText"
+        v-on:submit="persist">
+        <template v-slot:description><slot></slot></template>
+        <template v-slot:after>
+            <div v-if="hasHistory" class="collapse" id="usernameHistory">
+                <table class="table table-dark table-striped ">
+                    <thead>
+                    <tr>
+                        <th scope="col">Username</th>
+                        <th scope="col">Chosen</th>
+                        <th scope="col">Retained Until</th>
+                        <th scope="col">&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="identity in identities">
+                        <th scope="row">{{ identity.name }}</th>
+                        <td>{{ identity.ago }}</td>
+                        <td>{{ identity.until }}</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-light">{{'messages.release' | trans | ucfirst }}</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-
-            <form-messaging :has-error="hasError" :has-success="hasSaved" :message="message" text="Please use a maximum of 48 characters and no spaces."/>
-        </div>
-
-        <div v-if="hasHistory" class="collapse" id="usernameHistory">
-            <table class="table table-dark table-striped ">
-                <thead>
-                <tr>
-                    <th scope="col">Username</th>
-                    <th scope="col">Chosen</th>
-                    <th scope="col">Retained Until</th>
-                    <th scope="col">&nbsp;</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr v-for="identity in identities">
-                    <th scope="row">{{ identity.name }}</th>
-                    <td>{{ identity.ago }}</td>
-                    <td>{{ identity.until }}</td>
-                    <td>
-                        <button class="btn btn-sm btn-outline-light">{{'messages.release' | trans | ucfirst }}</button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="card-footer d-flex align-items-center">
-            <span class="flex-grow-1">
-                <a href="#"><i class="icon-help"></i> <small>{{ 'messages.more information' | trans | ucfirst }}</small></a>
-            </span>
-
+        </template>
+        <template v-slot:buttons>
             <button v-if="hasHistory" class="btn btn-sm btn-outline-dark mr-2" type="button" data-toggle="collapse" data-target="#usernameHistory" aria-expanded="false" aria-controls="usernameHistory">
                 {{ 'messages.history' | trans | ucfirst }}
             </button>
-
-            <button :disabled="persisting || !canPersist" v-on:click="persist" type="button" class="btn btn-sm btn-dark">{{ persistBtnText | trans | ucfirst }}</button>
-        </div>
-    </div>
+        </template>
+    </text-input-form>
 </template>
 
 <script>
-    import FormMessaging from "./partials/Messaging";
+    import TextInputForm from "./Input";
     export default {
         name: 'username-form',
-        components: {FormMessaging},
+        components: {TextInputForm},
         props: {
             persistBtnText: {
                 type: String,
@@ -63,8 +58,7 @@
         },
         data () { return {
             username: '',
-            hasError: false,
-            hasSaved: false,
+            hasPersisted: false,
             persisting: false,
             message: '',
             identities: [],
@@ -74,21 +68,38 @@
             hasHistory () {
                 return this.identities.length > 0;
             },
-            canPersist () {
-                return this.username.length > 0;
+            triState () {
+                if (this.username.length >48) {
+                    return -1;
+                }
+
+                if (this.hasPersisted === true) {
+                    return 1;
+                }
+                return 0;
+            },
+            validFeedback () {
+                if (this.triState < 0) { return ''; }
+                if (this.triState === 0 && this.persisting === true) { return 'Please wait...';}
+                if (this.triState > 0 && this.message.length > 0) { return this.message; }
+            },
+            invalidFeedback () {
+                // We have a server side message...
+                if (this.triState < 0 && this.message.length > 0) { return this.message; }
+
+                // Basic client side validation
+                if (this.username.length > 48) {
+                    return 'Please use a maximum of 48 characters';
+                }
+                return '';
             }
         },
 
         methods: {
             persist () {
-                this.hasSaved = true;
                 this.persisting = true;
+                console.log(this.username)
             },
-            reset () {
-                this.hasSaved = false;
-                this.hasError = false;
-                this.message = '';
-            }
         }
     }
 </script>
