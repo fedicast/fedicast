@@ -1,48 +1,67 @@
 <template>
-    <div class="card mb-5">
-        <div class="card-body">
-            <h2>{{'messages.display name' | trans | ucfirst }}</h2>
-            <slot></slot>
-            <input :disabled="persisting" v-on:keypress="reset" name="name" type="text" :class="{'is-invalid': hasError, 'is-valid' : hasSaved}" class="form-control mt-3" v-model="displayName" placeholder="Sam" :aria-label="'messages.display name' | trans | ucfirst" aria-describedby="display-name-extra">
-
-            <form-messaging :has-error="hasError" :has-saved="hasSaved" :message="message" text="Please use a maximum of 32 characters."/>
-        </div>
-        <div class="card-footer d-flex align-items-center">
-            <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>{{ 'messages.more information' | trans | ucfirst }}</small></a></span>
-            <button :disabled="!canPersist" v-on:click="persist" type="button" class="btn btn-sm btn-dark">{{ 'messages.save' | trans | ucfirst }}</button>
-        </div>
-    </div>
+    <text-input-form
+        label="messages.display name"
+        v-model="displayName"
+        placeholder="Sam"
+        default-message="Please use a maximum of 32 characters."
+        :invalid-feedback="invalidFeedback"
+        :valid-feedback="validFeedback"
+        :tri-state="triState"
+        :disabled="persisting"
+        :save-label="persisting ? 'please wait' : 'save'"
+        v-on:submit="persist">
+        <template v-slot:description><slot></slot></template>
+    </text-input-form>
 </template>
 
 <script>
     import FormMessaging from "./partials/Messaging";
+    import TextInputForm from "./Input";
     export default {
         name: 'display-name-form',
-        components: {FormMessaging},
+        components: {TextInputForm, FormMessaging},
         data () { return {
             displayName: '',
-            hasError: false,
-            hasSaved: false,
+            hasPersisted: false,
             persisting: false,
             message: '',
         }},
 
         computed: {
-            canPersist () {
-                return this.displayName.length > 0;
+            triState () {
+                if (this.displayName.length === 0 || this.displayName.length > 32) {
+                    return -1;
+                }
+
+                if (this.hasPersisted === true) {
+                    return 1;
+                }
+                return 0;
+            },
+            validFeedback () {
+                if (this.triState < 0) { return ''; }
+                if (this.triState === 0 && this.persisting === true) { return 'Please wait...';}
+                if (this.triState > 0 && this.message.length > 0) { return this.message; }
+            },
+            invalidFeedback () {
+                // We have a server side message...
+                if (this.triState < 0 && this.message.length > 0) { return this.message; }
+
+                // Basic client side validation
+                if (this.displayName.length === 0) {
+                    return 'Please enter a display name';
+                } else if (this.displayName.length > 32) {
+                    return 'Please use a maximum of 32 characters';
+                }
+                return '';
             }
         },
 
         methods: {
             persist () {
-                this.hasSaved = true;
                 this.persisting = true;
+                console.log(this.displayName)
             },
-            reset () {
-                this.hasSaved = false;
-                this.hasError = false;
-                this.message = false;
-            }
         }
     }
 </script>
