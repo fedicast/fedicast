@@ -3,23 +3,10 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import routes from './routes';
 import App from './App';
-import Lang from 'lang.js';
-import translations from './translations';
-
-const lang = new Lang({
-    locale: 'en',
-    messages: translations,
-});
-
-Vue.filter('trans', (...args) => {
-    return lang.get(...args);
-});
-
-Vue.filter('ucfirst', (str) => {
-    return str.charAt(0).toUpperCase() + str.slice(1)
-});
+import {GlobalFilters} from './filters'
 
 Vue.use(VueRouter);
+Vue.use(GlobalFilters);
 
 const router = new VueRouter({
     mode: 'history',
