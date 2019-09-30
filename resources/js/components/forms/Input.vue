@@ -8,11 +8,11 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" :id="id+'-extra'">{{ prefix }}</span>
                     </div>
-                    <input :id="id" v-bind:value="value" v-on:focusout="$emit('change', $event.target.value)" v-on:keypress="$emit('change', $event.target.value)" :disabled="disabled" name="name" type="text" :class="{'is-invalid': triState < 0, 'is-valid' : triState > 0}" class="form-control" :placeholder="placeholder" :aria-label="label" :aria-describedby="id+'-extra'">
+                    <input :id="id" v-bind:value="value" v-on:focusout="$emit('change', $event.target.value)" v-on:keypress="$emit('change', $event.target.value)" :disabled="disabled" name="name" type="text" :class="{'is-invalid': changes > 0 && triState < 0, 'is-valid' : triState > 0}" class="form-control" :placeholder="placeholder" :aria-label="label" :aria-describedby="id+'-extra'">
                 </div>
             </template>
-            <input v-else :id="id" v-bind:value="value" v-on:focusout="$emit('change', $event.target.value)" v-on:keypress="$emit('change', $event.target.value)" :disabled="disabled" name="name" type="text" :class="{'is-invalid': triState < 0, 'is-valid' : triState > 0}" class="form-control mt-3" :placeholder="placeholder" :aria-label="label">
-            <form-messaging :has-error="triState < 0" :has-saved="triState > 0" :message="message" :text="defaultMessage"/>
+            <input v-else :id="id" v-bind:value="value" v-on:focusout="$emit('change', $event.target.value)" v-on:keypress="$emit('change', $event.target.value)" :disabled="disabled" name="name" type="text" :class="{'is-invalid': changes > 0 && triState < 0, 'is-valid' : triState > 0}" class="form-control mt-3" :placeholder="placeholder" :aria-label="label">
+            <form-messaging :has-error="changes > 0 && triState < 0" :has-saved="triState > 0" :message="message" :text="defaultMessage"/>
             <slot name="after"></slot>
         </div>
         <div class="card-footer d-flex align-items-center">
@@ -76,6 +76,14 @@
             disabled: {
                 type: Boolean,
                 default: false
+            }
+        },
+        data: () => { return {
+            changes: 0
+        }},
+        watch: {
+            value () {
+                this.changes++;
             }
         },
         computed: {
