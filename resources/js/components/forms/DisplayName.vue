@@ -1,5 +1,6 @@
 <template>
     <text-input-form
+        id="display-name"
         label="messages.display name"
         v-model="displayName"
         placeholder="Sam"

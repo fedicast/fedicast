@@ -1,5 +1,6 @@
 <template>
     <text-input-form
+        id="email"
         label="messages.email address"
         v-model="email"
         placeholder="sam@example.com"
