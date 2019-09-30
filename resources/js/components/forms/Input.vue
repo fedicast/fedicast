@@ -1,10 +1,19 @@
 <template>
     <div class="card mb-5">
         <div class="card-body">
-            <label for="text-input" class="h2 d-block">{{ label | trans | ucfirst }}</label>
+            <label :for="id" class="h2 d-block">{{ label | trans | ucfirst }}</label>
             <slot name="description"></slot>
-            <input id="text-input" v-bind:value="value" v-on:focusout="$emit('change', $event.target.value)" v-on:keypress="$emit('change', $event.target.value)" :disabled="disabled" name="name" type="text" :class="{'is-invalid': triState < 0, 'is-valid' : triState > 0}" class="form-control mt-3" :placeholder="placeholder" :aria-label="label" aria-describedby="display-name-extra">
+            <template v-if="prepend.length > 0">
+                <div class="input-group mt-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" :id="id+'-extra'">{{ prepend }}</span>
+                    </div>
+                    <input :id="id" v-bind:value="value" v-on:focusout="$emit('change', $event.target.value)" v-on:keypress="$emit('change', $event.target.value)" :disabled="disabled" name="name" type="text" :class="{'is-invalid': triState < 0, 'is-valid' : triState > 0}" class="form-control mt-3" :placeholder="placeholder" :aria-label="label" :aria-describedby="id+'-extra'">
+                </div>
+            </template>
+            <input v-else :id="id" v-bind:value="value" v-on:focusout="$emit('change', $event.target.value)" v-on:keypress="$emit('change', $event.target.value)" :disabled="disabled" name="name" type="text" :class="{'is-invalid': triState < 0, 'is-valid' : triState > 0}" class="form-control mt-3" :placeholder="placeholder" :aria-label="label">
             <form-messaging :has-error="triState < 0" :has-saved="triState > 0" :message="message" :text="defaultMessage"/>
+            <slot name="after"></slot>
         </div>
         <div class="card-footer d-flex align-items-center">
             <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>{{ 'messages.more information' | trans | ucfirst }}</small></a></span>
@@ -24,6 +33,14 @@
             event: 'change'
         },
         props: {
+            id: {
+                type: String,
+                required: true,
+            },
+            prepend: {
+                type: String,
+                default: '',
+            },
             value: {
                 type: String,
                 default: ''
