@@ -1,51 +1,68 @@
 <template>
-    <div class="card mb-5">
-        <div class="card-body">
-            <h2>{{'messages.email address' | trans | ucfirst }}</h2>
-            <slot></slot>
-            <input :disabled="persisting" v-on:keypress="reset" name="email" type="text" :class="{'is-invalid': hasError, 'is-valid' : hasSaved}" v-model="email" class="form-control mt-3" placeholder="me@example.com" :aria-label="'messages.email address' | trans | ucfirst" aria-describedby="email-extra">
-            <form-messaging :has-error="hasError" :has-success="hasSaved" :message="message" text="We will email you to verify this change."/>
-        </div>
-        <div class="card-footer d-flex align-items-center">
-            <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>{{ 'messages.more information' | trans | ucfirst }}</small></a></span>
+    <text-input-form
+        label="messages.email address"
+        v-model="email"
+        placeholder="sam@example.com"
+        default-message="We will email you to verify this change."
+        :invalid-feedback="invalidFeedback"
+        :valid-feedback="validFeedback"
+        :tri-state="triState"
+        :disabled="persisting"
+        :save-label="persisting ? 'please wait' : 'save'"
+        v-on:submit="persist">
+        <template v-slot:description><slot></slot></template>
+        <template v-slot:buttons>
             <button v-if="!hasVerifiedEmail" type="button" class="btn btn-sm btn-outline-dark mr-2">{{ 'messages.resend validation email' | trans | ucfirst }}</button>
-            <button :disabled="!canPersist" v-on:click="persist" type="button" class="btn btn-sm btn-dark">{{ 'messages.save' | trans | ucfirst }}</button>
-        </div>
-    </div>
+        </template>
+    </text-input-form>
 </template>
 
 <script>
-    import FormMessaging from "./partials/Messaging";
+    import TextInputForm from "./Input";
     export default {
         name: 'email-form',
-        components: {FormMessaging},
+        components: {TextInputForm},
         data () { return {
             email: '',
-            hasError: false,
-            hasSaved: false,
+            hasPersisted: false,
             persisting: false,
             message: '',
+            hasVerifiedEmail: false,
         }},
 
         computed: {
-            hasVerifiedEmail () {
-                return false;
+            triState () {
+                if (this.email.length === 0 || this.email.length > 244) {
+                    return -1;
+                }
+
+                if (this.hasPersisted === true) {
+                    return 1;
+                }
+                return 0;
             },
-            canPersist () {
-                return this.email.length > 0;
+            validFeedback () {
+                if (this.triState < 0) { return ''; }
+                if (this.triState === 0 && this.persisting === true) { return 'Please wait...';}
+                if (this.triState > 0 && this.message.length > 0) { return this.message; }
+            },
+            invalidFeedback () {
+                // We have a server side message...
+                if (this.triState < 0 && this.message.length > 0) { return this.message; }
+
+                // Basic client side validation
+                if (this.email.length > 244) {
+                    return 'Please use a maximum of 244 characters';
+                }
+                return '';
             }
         },
 
         methods: {
             persist () {
-                this.hasSaved = true;
                 this.persisting = true;
+                console.log(this.email)
             },
-            reset () {
-                this.hasSaved = false;
-                this.hasError = false;
-                this.message = false;
-            }
         }
     }
 </script>
