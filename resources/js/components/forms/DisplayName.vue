@@ -15,11 +15,10 @@
 </template>
 
 <script>
-    import FormMessaging from "./partials/Messaging";
     import TextInputForm from "./Input";
     export default {
         name: 'display-name-form',
-        components: {TextInputForm, FormMessaging},
+        components: {TextInputForm},
         data () { return {
             displayName: '',
             hasPersisted: false,
