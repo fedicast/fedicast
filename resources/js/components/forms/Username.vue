@@ -97,7 +97,7 @@
 
                 // Basic client side validation
                 if (this.username.length < this.minLength) {
-                    return 'Please enter a username';
+                    return `Please enter at least ${this.minLength} characters`;
                 }
                 if (this.username.length > this.maxLength) {
                     return `Please use a maximum of ${this.maxLength} characters`;
