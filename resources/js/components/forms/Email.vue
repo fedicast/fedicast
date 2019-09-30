@@ -4,7 +4,7 @@
             <h2>{{'messages.email address' | trans | ucfirst }}</h2>
             <slot></slot>
             <input :disabled="persisting" v-on:keypress="reset" name="email" type="text" :class="{'is-invalid': hasError, 'is-valid' : hasSaved}" v-model="email" class="form-control mt-3" placeholder="me@example.com" :aria-label="'messages.email address' | trans | ucfirst" aria-describedby="email-extra">
-            <form-messaging :has-error="hasError" :has-saved="hasSaved" :message="message" text="We will email you to verify this change."/>
+            <form-messaging :has-error="hasError" :has-success="hasSaved" :message="message" text="We will email you to verify this change."/>
         </div>
         <div class="card-footer d-flex align-items-center">
             <span class="flex-grow-1"><a href="#"><i class="icon-help"></i> <small>{{ 'messages.more information' | trans | ucfirst }}</small></a></span>

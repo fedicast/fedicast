@@ -10,7 +10,7 @@
                 <input :disabled="persisting" v-on:keypress="reset" name="username" type="text" :class="{'is-invalid': hasError, 'is-valid' : hasSaved}" class="form-control" v-model="username" placeholder="username" aria-label="Username" aria-describedby="domain-addon">
             </div>
 
-            <form-messaging :has-error="hasError" :has-saved="hasSaved" :message="message" text="Please use a maximum of 48 characters and no spaces."/>
+            <form-messaging :has-error="hasError" :has-success="hasSaved" :message="message" text="Please use a maximum of 48 characters and no spaces."/>
         </div>
 
         <div v-if="hasHistory" class="collapse" id="usernameHistory">
