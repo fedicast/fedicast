@@ -73,6 +73,19 @@
 
       addMessage(1111);
       addMessage(2222);
+
+      this.filters = this.filters.map((el) => {
+        if (el.type === 'category' || el.type === 'podcast') {
+          const p = {
+            [el.type]: el.id
+          };
+          const t = that.getFilteredBy(p);
+          el.count = t.length;
+          console.log(el.count);
+        }
+        return el;
+      });
+
     },
     data() {
       return {
@@ -81,32 +94,32 @@
             id: 'unread',
             type: 'category',
             name: 'messages.unread',
-            count: Math.round(3 + Math.random() * 30),
+            count: 0,
           },
           {
             id: 'read',
             type: 'category',
             name: 'messages.read',
-            count: Math.round(3 + Math.random() * 30),
+            count: 0,
           },
           {
             id: 'bookmarked',
             type: 'category',
             name: 'messages.bookmarked',
-            count: Math.round(3 + Math.random() * 30),
+            count: 0,
           },
 
           {
             id: 'xxxx-xxxx-xxxx-1111',
             type: 'podcast',
             name: 'My Podcast',
-            count: Math.round(3 + Math.random() * 30),
+            count: 0,
           },
           {
             id: 'xxxx-xxxx-xxxx-2222',
             type: 'podcast',
             name: 'Team Name / Podcast Name',
-            count: Math.round(3 + Math.random() * 30),
+            count: 0,
           }
         ],
         messages: []
@@ -156,7 +169,16 @@
       },
 
       filteredMessages() {
-        if (this.currentFilterProps.all === true) {
+        return this.getFilteredBy(this.currentFilterProps);
+      },
+
+      hasMessagesForFilter() {
+        return this.filteredMessages.length > 0;
+      }
+    },
+    methods: {
+      getFilteredBy (props) {
+        if (props.all || props.all === true) {
           return this.messages;
         }
 
@@ -169,8 +191,8 @@
           exists.push(el.id);
         };
 
-        if (this.currentFilterProps.category !== null) {
-          const cat = this.currentFilterProps.category;
+        if (props.category !== null) {
+          const cat = props.category;
           if (cat === 'unread') {
             this.messages.filter((el) => {
               return el.meta.read === false;
@@ -186,8 +208,8 @@
           }
         }
 
-        if (this.currentFilterProps.podcast !== null) {
-          const podcast = this.currentFilterProps.podcast;
+        if (props.podcast !== null) {
+          const podcast = props.podcast;
           this.messages.filter((el) => {
             return el.podcast === podcast;
           }).forEach(addToFiltered);
@@ -196,14 +218,10 @@
         return filtered;
       },
 
-      hasMessagesForFilter() {
-        return this.filteredMessages.length > 0;
-      }
-    },
-    methods: {
       getPodcastById (id) {
         return this.podcasts.find((el => el.id === id));
       },
+
       filterClass(filter = '', is = [], not = []) {
         return (this.currentFilter === filter) ? is : not
       },
