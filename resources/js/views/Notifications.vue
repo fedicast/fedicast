@@ -76,12 +76,9 @@
 
       this.filters = this.filters.map((el) => {
         if (el.type === 'category' || el.type === 'podcast') {
-          const p = {
+          el.count = that.getFilteredBy({
             [el.type]: el.id
-          };
-          const t = that.getFilteredBy(p);
-          el.count = t.length;
-          console.log(el.count);
+          }).length;
         }
         return el;
       });
