@@ -44,12 +44,15 @@
 
 <script>
   import NotificationList from "../components/NotificationList";
+  import { mapState, mapActions } from 'vuex'
 
   export default {
     name: 'Notifications',
     components: {NotificationList},
     mounted() {
       // inject dummy data for local test
+
+      this.getNotifications();
 
       const that = this;
 
@@ -174,6 +177,9 @@
       }
     },
     methods: {
+      ...mapActions({
+        getNotifications: "api/listNotifications"
+      }),
       getFilteredBy (props) {
         if (props.all || props.all === true) {
           return this.messages;
