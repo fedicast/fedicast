@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 import routes from './routes';
 import App from './App';
 import {GlobalFilters} from './filters'
+import store from "./store";
 
 Vue.use(VueRouter);
 Vue.use(GlobalFilters);
@@ -21,5 +22,6 @@ const router = new VueRouter({
 
 const main = new Vue({
     router,
+    store,
     ...App
 });
