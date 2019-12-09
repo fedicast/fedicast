@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "fedicast/fedicast",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Federated Podcast Hosting Platform",
     "keywords": [
         "framework",
         "laravel"
