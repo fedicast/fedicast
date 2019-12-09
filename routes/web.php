@@ -98,4 +98,9 @@ Route::group(['middleware' => ['auth']], function(){
     Route::delete('/account/username-release', 'UserController@actionReleaseUsername')->name('user.settings.release-username');
     Route::delete('/account', 'UserController@actionDelete')->name('user.settings.delete');
 
+    Route::name('api.')->prefix('api')->group(function(){
+        Route::post('podcast/create', function(){
+            return 'hello';
+        })->name('postcast.create');
+    });
 });
