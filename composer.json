@@ -15,8 +15,11 @@
         "laravel/framework": "^6.2",
         "laravel/tinker": "^1.0",
         "laravel/ui": "^1.0",
+        "michelf/php-markdown": "^1.9",
         "spatie/laravel-activitylog": "^3.9",
-        "whichbrowser/parser": "^2.0"
+        "whichbrowser/parser": "^2.0",
+        "ext-libxml": "*",
+        "ext-dom": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.6",
