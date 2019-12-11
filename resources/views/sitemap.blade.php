@@ -38,7 +38,7 @@
                 <nav class="row nav ml-0">
                     <a class="nav-link col-4" href="{{ route('about') }}">{{ __('About FediCast') }}</a>
                     <a class="nav-link col-4" href="{{ route('about.roadmap') }}">{{ __('Road Map') }}</a>
-                    <a class="nav-link col-4" href="{{ route('blog') }}">{{ __('Blog') }}</a>
+                    <a class="nav-link col-4" href="{{ route('blog.index') }}">{{ __('Blog') }}</a>
                     <a class="nav-link col-4" href="{{ route('platform') }}">{{ __('Platform') }}</a>
                     <a class="nav-link col-4" href="{{ route('platform.features') }}">{{ __('Features') }}</a>
                     <a class="nav-link col-4" href="{{ route('platform.federation') }}">{{ __('Federation') }}</a>

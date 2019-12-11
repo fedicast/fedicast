@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <a href="{{ route('blog') }}" class="hero-blog-pill rounded-pill text-light">
+                    <a href="{{ route('blog.index') }}" class="hero-blog-pill rounded-pill text-light">
                         <span class="badge badge-pill badge-success mr-2">New</span>
                         Blog title
                     </a>
