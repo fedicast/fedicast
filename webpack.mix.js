@@ -24,5 +24,7 @@ mix.webpackConfig({
     }
 });
 
-mix.js('resources/js/main.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+mix
+    .js('resources/js/app/main.js', 'public/js/app.js')
+    .js('resources/js/search/main.js', 'public/js/search.js')
+    .sass('resources/sass/app.scss', 'public/css');
