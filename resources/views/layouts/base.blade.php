@@ -10,6 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script src="{{ mix('js/common.js') }}" defer></script>
     @stack('scripts')
 
     <!-- Fonts -->

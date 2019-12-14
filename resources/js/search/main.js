@@ -1,4 +1,3 @@
-import '../bootstrap';
 import Vue from 'vue';
 import Search from './components/Search';
 
