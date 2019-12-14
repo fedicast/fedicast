@@ -44,7 +44,7 @@ Route::view('/post/account-deletion', 'account.post-deletion')->name('account.po
 
 Route::prefix('blog')->name('blog.')->group(function(){
     Route::get('/', 'BlogController@index')->name('index');
-    Route::get('/search', 'BlogController@search')->name('search');
+    Route::get('/index.json', 'BlogController@search')->name('search');
     Route::get('/{slug}', 'BlogController@view')->name('view');
 });
 
