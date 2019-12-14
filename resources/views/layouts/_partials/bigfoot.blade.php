@@ -13,7 +13,7 @@
                     </span>
                     @endif
                     <a class="nav-link" href="{{ route('about') }}">{{ __('About') }}</a>
-                    <a class="nav-link" href="{{ route('blog') }}">{{ __('Blog') }}</a>
+                    <a class="nav-link" href="{{ route('blog.index') }}">{{ __('Blog') }}</a>
                 </nav>
             </div>
             <div class="col">

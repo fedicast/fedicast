@@ -1,0 +1,3 @@
+# Hello World!
+
+This is the first development blog for this new platform I am calling Fedicast...

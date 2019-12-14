@@ -5,10 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <a href="{{ route('blog') }}" class="hero-blog-pill rounded-pill text-light">
-                        <span class="badge badge-pill badge-success mr-2">New</span>
-                        Blog title
-                    </a>
+                    @include('_partials.new-blog-post-badge')
                     <h1 class="mb-4">Welcome tagline text with some basic descriptor</h1>
                     <h2 class="h3 mb-5">A slightly longer subtitle that expands on the previous headline with more detail about why we are awesome</h2>
                     <a href="{{ route('register') }}" class="btn btn-dark">Join Free</a>

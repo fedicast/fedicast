@@ -33,13 +33,26 @@ Route::view('/legal/toc', 'legal.toc')->name('legal.toc');
 Route::view('/legal/coc', 'legal.coc')->name('legal.coc');
 Route::view('/post/account-deletion', 'account.post-deletion')->name('account.post-deletion');
 
-Route::view('/blog', 'blog')->name('blog');
+/*
+|--------------------------------------------------------------------------
+| Dynamic Public Routes
+|--------------------------------------------------------------------------
+|
+| ...
+|
+*/
+
+Route::prefix('blog')->name('blog.')->group(function(){
+    Route::get('/', 'BlogController@index')->name('index');
+    Route::get('/index.json', 'BlogController@search')->name('search');
+    Route::get('/{slug}', 'BlogController@view')->name('view');
+});
 
 Auth::routes(['verify' => true]);
 
 Route::get('/@/{username}', 'UserController@actionPublicProfile')->name('user.public.profile');
 
-/*
+/*r
 |--------------------------------------------------------------------------
 | Static Authenticated Routes
 |--------------------------------------------------------------------------

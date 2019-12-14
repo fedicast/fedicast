@@ -1,4 +1,9 @@
 @extends('layouts.base')
+
+@push('scripts')
+    <script src="{{ mix('js/main.js') }}" defer></script>
+@endpush
+
 @section('base.body')
     <nav class="navbar navbar-expand-md {{ !isset($darkBg) ? 'navbar-light' : 'navbar-dark' }}  bg-white py-3">
         <div class="container">
@@ -22,7 +27,7 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('blog') }}">{{ __('Blog') }}</a>
+                        <a class="nav-link" href="{{ route('blog.index') }}">{{ __('Blog') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('documentation') }}">{{ __('Documentation') }}</a>
