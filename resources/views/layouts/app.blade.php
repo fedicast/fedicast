@@ -1,4 +1,9 @@
 @extends('layouts.base')
+
+@push('scripts')
+    <script src="{{ mix('js/main.js') }}" defer></script>
+@endpush
+
 @section('base.body')
     <nav class="navbar navbar-expand-md {{ !isset($darkBg) ? 'navbar-light' : 'navbar-dark' }}  bg-white py-3">
         <div class="container">

@@ -1,5 +1,9 @@
 @extends('layouts.public')
 
+@push('scripts')
+    <script src="{{ mix('js/search.js') }}" defer></script>
+@endpush
+
 <?php
 /**
  * @var \App\Blog\Item[] $items
