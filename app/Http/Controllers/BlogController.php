@@ -56,7 +56,7 @@ class BlogController extends Controller
     public function view(string $slug)
     {
         if (! $item = $this->collector->collect()->filter(function(Item $item) use($slug) {
-            return $item->getSlug() === $slug;
+            return $item->getDate()->isPast() && $item->getSlug() === $slug;
         })->first()) {
             abort(404);
         }
