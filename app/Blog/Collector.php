@@ -56,5 +56,26 @@ class Collector
 
         return collect($items);
     }
+
+    public function getPublished(): Collection
+    {
+        return $this->collect()->sortBy(function(Item $item){
+            return $item->getDate()->unix();
+        }, SORT_REGULAR, true)->filter(function(Item $item){
+            return $item->getDate()->isPast();
+        });
+    }
+
+    public function getForSlug(string $slug): ?Item
+    {
+        return $this->collect()->filter(function(Item $item) use($slug) {
+            return $item->getDate()->isPast() && $item->getSlug() === $slug;
+        })->first();
+    }
+
+    public function getLatest(): ?Item
+    {
+        return $this->getPublished()->first();
+    }
 }
 

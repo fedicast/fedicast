@@ -29,20 +29,12 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $collection = $this->collector->collect()->sortBy(function(Item $item){
-            return $item->getDate()->unix();
-        }, SORT_REGULAR, true)->filter(function(Item $item){
-            return $item->getDate()->isPast();
-        });
-
-        return view('blog.index')->with('items', $collection);
+        return view('blog.index')->with('items', $this->collector->getPublished());
     }
 
     public function search(): JsonResponse
     {
-        $collection = $this->collector->collect()->filter(function(Item $item){
-            return $item->getDate()->isPast();
-        })->map(function(Item $item){
+        $collection = $this->collector->getPublished()->map(function(Item $item){
             return [
                 'title' => $item->getTitle(),
                 'link' => route('blog.view', $item->getSlug()),
@@ -55,9 +47,7 @@ class BlogController extends Controller
 
     public function view(string $slug)
     {
-        if (! $item = $this->collector->collect()->filter(function(Item $item) use($slug) {
-            return $item->getDate()->isPast() && $item->getSlug() === $slug;
-        })->first()) {
+        if (! $item = $this->collector->getForSlug($slug)) {
             abort(404);
         }
 

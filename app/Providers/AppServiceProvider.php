@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use View;
 use App\Blog\Collector;
+use App\Blog\LatestItemComposer;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,6 +28,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        View::composer('_partials.new-blog-post-badge', LatestItemComposer::class);
     }
 }
