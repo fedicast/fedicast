@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Blog\Collector;
 use App\Blog\Item;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Psy\Util\Json;
 
 class BlogController extends Controller
 {
@@ -38,9 +40,19 @@ class BlogController extends Controller
         return view('blog.index')->with('items', $collection);
     }
 
-    public function search()
+    public function search(): JsonResponse
     {
-        // ...
+        $collection = $this->collector->collect()->filter(function(Item $item){
+            return $item->getDate()->isPast();
+        })->map(function(Item $item){
+            return [
+                'title' => $item->getTitle(),
+                'link' => route('blog.view', $item->getSlug()),
+                'extract' => $item->getExtract()
+            ];
+        });
+
+        return new JsonResponse($collection);
     }
 
     public function view(string $slug)
