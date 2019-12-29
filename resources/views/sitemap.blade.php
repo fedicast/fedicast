@@ -45,7 +45,11 @@
                     <a class="nav-link col-4" href="{{ route('pricing') }}">{{ __('Pricing') }}</a>
                     <a class="nav-link col-4" href="{{ route('about.budget') }}">{{ __('Budget') }}</a>
                     <span class="nav-link col-4">
+                        @if(Route::has('register'))
                         <a  href="{{ route('register') }}">{{ __('Join Free') }}</a> /
+                        @elseif(Route::has('register.queue'))
+                        <a href="{{ route('register.queue') }}">{{ __('Join Queue') }}</a> /
+                        @endif
                         <a  href="{{ route('login') }}">{{ __('Login') }}</a>
                     </span>
                 </nav>

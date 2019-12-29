@@ -50,6 +50,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}"><strong>{{ __('Join Free') }}</strong></a>
                             </li>
+                        @elseif(Route::has('register.queue'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register.queue') }}"><strong>{{ __('Join Queue') }}</strong></a>
+                            </li>
                         @endif
                     @else
                         @include('layouts._partials.auth-dropdown')

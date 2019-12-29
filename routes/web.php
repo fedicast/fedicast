@@ -35,7 +35,11 @@ Route::view('/post/account-deletion', 'account.post-deletion')->name('account.po
 
 Route::view('/blog', 'blog')->name('blog');
 
-Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true, 'register' => config('registration.open')]);
+
+if (config('registration.queue')) {
+    Route::view('/register/queue', '')->name('register.queue');
+}
 
 Route::get('/@/{username}', 'UserController@actionPublicProfile')->name('user.public.profile');
 
