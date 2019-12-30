@@ -11,14 +11,25 @@
 // Font Awesome
 @import '~@fortawesome/fontawesome-free/css/all';
 
+body.auth-grad{
+    background-image: linear-gradient( 136deg, #f5f5dc 0%, #f8fafc 100%);
+}
+
 //
 // Auth view card
 //
 .card.auth{
     border-color: #e9ecef;
     border-radius: 0.6rem;
-    .card-body{
-        padding: 2rem;
+    .card-body {
+        padding: 0;
+        .col{
+            padding: 2rem;
+        }
+        .info-col{
+            background: #d3d5d6;
+            border-radius: 0.6rem 0 0 0.6rem;
+        }
     }
 }
 
