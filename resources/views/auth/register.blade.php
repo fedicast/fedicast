@@ -18,6 +18,8 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
+        <input type="hidden" name="is_supporter" value="{{  request('supporter', 0) }}" />
+
         <div class="form-group">
             <label for="name" class="col-form-label">{{ __('Name') }}</label>
 
@@ -71,6 +73,9 @@
         </div>
 
         <div class="form-group mb-0">
+            <p>By clicking "{{ __('Register') }}" you are agreeing to the <a href="{{ route('legal.toc') }}">{{ __('Terms of Service') }}</a>. For more information on how we use and protect the information you submit please see our <a href="{{ route('legal.privacy') }}">{{ __('Privacy Policy') }}</a>.</p>
+
+
             <button type="submit" class="btn btn-lg btn-primary">
                 {{ __('Register') }}
             </button>
