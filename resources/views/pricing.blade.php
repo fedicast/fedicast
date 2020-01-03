@@ -62,9 +62,9 @@
                                 style="margin-left: 0.5rem;font-size: 1.2rem;top: -0.5rem;">/mo</sup>
                         </p>
 
-                        @if(Route::has('register'))
+                        @if(registration()->isOpen())
                             <a href="{{ route('register') }}" class="btn btn-outline-dark btn-lg w-50">Join Free</a>
-                        @elseif(Route::has('register.queue'))
+                        @elseif(registration()->hasQueue())
                             <a href="{{ route('register.queue') }}" class="btn btn-outline-dark btn-lg w-50">Join Queue</a>
                             <div class="d-block text-left mt-4 border p-2 small bg-light rounded">Registration is currently closed to new users, click above to register interest and be the first to know when a slot opens up.</div>
                         @else
@@ -93,9 +93,9 @@
                         <p class="h1 py-2">
                             <strong>£2.99</strong><sup style="margin-left: 0.5rem;font-size: 1.2rem;top: -0.5rem;">/mo</sup>
                         </p>
-                        @if(Route::has('register'))
+                        @if(registration()->isOpen())
                             <a href="{{ route('register', ['supporter' => true]) }}" class="btn btn-outline-dark btn-lg w-50">Join</a>
-                        @elseif(Route::has('register.queue'))
+                        @elseif(registration()->hasQueue())
                             <a href="{{ route('register.queue', ['supporter' => true]) }}" class="btn btn-outline-dark btn-lg w-50">Join Queue</a>
                             <div class="d-block text-left mt-4 border p-2 small bg-light rounded">Registration is currently closed to new users, click above to register interest and be the first to know when a slot opens up.</div>
                         @else
