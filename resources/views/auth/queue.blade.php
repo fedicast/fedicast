@@ -17,6 +17,8 @@
     <form method="POST" action="#">
         @csrf
 
+        <input type="hidden" name="supporter" value="{{  request('supporter', 0) }}" />
+
         <div class="form-group">
             <label for="name" class="col-form-label">{{ __('Name') }}</label>
 
