@@ -39,6 +39,7 @@ Auth::routes(['verify' => true, 'register' => config('registration.open')]);
 
 if (config('registration.queue')) {
     Route::view('/register/queue', 'auth.queue')->name('register.queue');
+    Route::post('/register/queue', 'Auth\QueueController@store')->name('register.queue.submit');
 }
 
 Route::get('/@/{username}', 'UserController@actionPublicProfile')->name('user.public.profile');

@@ -14,10 +14,10 @@
 @endsection
 
 @section('content')
-    <form method="POST" action="#">
+    <form method="POST" action="{{ route('register.queue.submit') }}">
         @csrf
 
-        <input type="hidden" name="supporter" value="{{  request('supporter', 0) }}" />
+        <input type="hidden" name="is_supporter" value="{{  request('supporter', 0) }}" />
 
         <div class="form-group">
             <label for="name" class="col-form-label">{{ __('Name') }}</label>
