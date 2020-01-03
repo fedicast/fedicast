@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('layouts.auth', ['bodyClass' => 'auth-grad'])
 
 @section('sidebar')
     <h1 class="h3 mb-3">{{ __('Verify Your Email Address') }}</h1>
