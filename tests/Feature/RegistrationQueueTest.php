@@ -20,6 +20,13 @@ class RegistrationQueueTest extends TestCase
         $this->assertTrue($helper->isOpen());
     }
 
+    public function test_registration_helper_isOpen_listens_to_config()
+    {
+        config()->set('registration.open', false);
+        $helper = new Registration();
+        $this->assertFalse($helper->isOpen());
+    }
+
     public function test_registration_closed_when_limit_hit()
     {
         $helper = new Registration();
@@ -41,5 +48,25 @@ class RegistrationQueueTest extends TestCase
         $this->assertFalse($helper->isOpen());
 
         $this->assertTrue($helper->hasQueue());
+    }
+
+    public function test_registration_helper_hasQueue_listens_to_config()
+    {
+        config()->set('registration.queue', false);
+        $helper = new Registration();
+        $this->assertFalse($helper->hasQueue());
+    }
+
+    public function test_invites_disabled_by_default()
+    {
+        $helper = new Registration();
+        $this->assertFalse($helper->invitesAllowed());
+    }
+
+    public function test_registration_helper_invitesAllowed_listens_to_config()
+    {
+        config()->set('registration.invites', 'ENABLED');
+        $helper = new Registration();
+        $this->assertTrue($helper->invitesAllowed());
     }
 }
