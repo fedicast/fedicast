@@ -69,4 +69,35 @@ class RegistrationQueueTest extends TestCase
         $helper = new Registration();
         $this->assertTrue($helper->invitesAllowed());
     }
+
+    public function test_registration_helper_invitesAllowed_invites_open_limited()
+    {
+        config()->set('registration.invites', Registration::INVITES_OPEN_LIMITED);
+        $helper = new Registration();
+        $this->assertTrue($helper->invitesAllowed());
+
+        config()->set('registration.open', false);
+        $this->assertFalse($helper->invitesAllowed());
+        config()->set('registration.open', true);
+
+        for ($i = 0; $i < 100; $i++) {
+            factory(User::class)->create();
+        }
+
+        $this->assertFalse($helper->invitesAllowed());
+    }
+
+    public function test_registration_helper_invitesAllowed_invites_limited()
+    {
+        config()->set('registration.invites', Registration::INVITES_INVITES_LIMITED);
+        config()->set('registration.open', false);
+        $helper = new Registration();
+        $this->assertTrue($helper->invitesAllowed());
+
+        for ($i = 0; $i < 100; $i++) {
+            factory(User::class)->create();
+        }
+
+        $this->assertFalse($helper->invitesAllowed());
+    }
 }
