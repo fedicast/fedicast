@@ -1,9 +1,9 @@
 @extends('layouts.auth', ['bodyClass' => 'auth-grad'])
 
 @section('sidebar')
-    <h1 class="h3 mb-3">{{ __('Register') }}</h1>
+    <h1 class="h3 mb-3">{{ __('Join Registration Queue') }}</h1>
     <p>
-        ...
+        {{ __('Account registrations are currently closed, you may however subscribe to the registration queue and receive an email when new registrations become available.') }}
     </p>
 
     <hr>
@@ -13,9 +13,8 @@
     </p>
 @endsection
 
-
 @section('content')
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register.queue.submit') }}">
         @csrf
 
         <input type="hidden" name="is_supporter" value="{{  request('supporter', 0) }}" />
@@ -29,8 +28,8 @@
 
             @error('name')
             <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <strong>{{ $message }}</strong>
+                            </span>
             @enderror
         </div>
 
@@ -44,40 +43,16 @@
 
             @error('email')
             <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-            @enderror
-        </div>
-
-        <div class="form-group">
-            <label for="password"
-                   class="col-form-label">{{ __('Password') }}</label>
-
-            <input id="password" type="password"
-                   class="form-control form-control-lg @error('password') is-invalid @enderror" name="password"
-                   required autocomplete="new-password">
-
-            @error('password')
-            <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
         </div>
 
-        <div class="form-group">
-            <label for="password-confirm"
-                   class="col-form-label">{{ __('Confirm Password') }}</label>
-
-            <input id="password-confirm" type="password" class="form-control form-control-lg"
-                   name="password_confirmation" required autocomplete="new-password">
-        </div>
-
         <div class="form-group mb-0">
-            <p>By clicking "{{ __('Register') }}" you are agreeing to the <a href="{{ route('legal.toc') }}">{{ __('Terms of Service') }}</a>. For more information on how we use and protect the information you submit please see our <a href="{{ route('legal.privacy') }}">{{ __('Privacy Policy') }}</a>.</p>
-
+            <p>By clicking "{{ __('Join Queue') }}" you are agreeing to the <a href="{{ route('legal.toc') }}">{{ __('Terms of Service') }}</a>. For more information on how we use and protect the information you submit please see our <a href="{{ route('legal.privacy') }}">{{ __('Privacy Policy') }}</a>.</p>
 
             <button type="submit" class="btn btn-lg btn-primary">
-                {{ __('Register') }}
+                {{ __('Join Queue') }}
             </button>
         </div>
     </form>

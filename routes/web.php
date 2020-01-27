@@ -35,7 +35,12 @@ Route::view('/post/account-deletion', 'account.post-deletion')->name('account.po
 
 Route::view('/blog', 'blog')->name('blog');
 
-Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true, 'register' => registration()->isOpen()]);
+
+if (registration()->hasQueue()) {
+    Route::view('/register/queue', 'auth.queue')->name('register.queue');
+    Route::post('/register/queue', 'Auth\QueueController@store')->name('register.queue.submit');
+}
 
 Route::get('/@/{username}', 'UserController@actionPublicProfile')->name('user.public.profile');
 
@@ -93,7 +98,6 @@ Route::group(['middleware' => ['auth']], function(){
 */
 
 Route::group(['middleware' => ['auth']], function(){
-
     Route::post('/account', 'UserController@actionUpdate')->name('user.settings.update');
     Route::delete('/account/username-release', 'UserController@actionReleaseUsername')->name('user.settings.release-username');
     Route::delete('/account', 'UserController@actionDelete')->name('user.settings.delete');

@@ -8,8 +8,14 @@
                         <a class="nav-link" href="{{ route('user.overview') }}">{{ __('Dashboard') }}</a>
                     @else
                     <span class="nav-link">
-                        <a  href="{{ route('login') }}">{{ __('Login') }}</a> /
-                        <a  href="{{ route('register') }}">{{ __('Join Free') }}</a>
+                        <a  href="{{ route('login') }}">{{ __('Login') }}</a>
+                        @if(Route::has('register'))
+                            / <a  href="{{ route('register') }}">{{ __('Join Free') }}</a>
+                        @elseif(Route::has('register.queue'))
+                            / <a href="{{ route('register.queue') }}">{{ __('Join Queue') }}</a>
+                        @else
+                            <span>{{ __('Registration Closed') }}</span>
+                        @endif
                     </span>
                     @endif
                     <a class="nav-link" href="{{ route('about') }}">{{ __('About') }}</a>

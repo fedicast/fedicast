@@ -34,3 +34,14 @@ function getGithubIssuesCount() : int {
         return -1;
     });
 }
+
+if (! function_exists('registration')) {
+
+    /**
+     * @return \App\Registration
+     */
+    function registration()
+    {
+        return app(\App\Registration::class);
+    }
+}

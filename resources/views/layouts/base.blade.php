@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-100">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="d-flex flex-column h-100 {{ isset($darkBg) ? 'bg-dark text-light' : '' }} {{ isset($bgGrad) ? 'with-grad' : '' }}">
+<body class="d-flex flex-column h-100 {{ isset($darkBg) ? 'bg-dark text-light' : '' }} {{ isset($bgGrad) ? 'with-grad' : '' }} {{isset($bodyClass) ? $bodyClass : ''}}">
 
 @if(Auth::check() && !Auth::user()->hasVerifiedEmail())
 <div class="bg-dark text-light py-2 text-center">

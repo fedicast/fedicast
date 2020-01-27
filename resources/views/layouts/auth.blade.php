@@ -9,7 +9,21 @@
     </nav>
 
     <main class="py-4">
-        @yield('content')
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="card auth shadow col col-md-8">
+                    <div class="row card-body">
+                        <div class="col col-md-4 info-col">
+                            @yield('sidebar')
+                        </div>
+                        <div class="col col-md-8">
+                            @yield('content')
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer class="container text-center my-5">
